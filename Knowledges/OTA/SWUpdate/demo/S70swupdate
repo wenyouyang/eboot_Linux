@@ -1,0 +1,16 @@
+#! /bin/sh
+
+case "$1" in
+	start|"")
+		udhcpc -i eth0 &
+		swupdate -v -k /etc/swupdate/swupdate-public.pem -w "-document_root /var/www/swupdate/" &
+		;;
+	stop)
+		killall swupdate
+		killall udhcpc
+		;;
+	*)
+		echo "Usage: $0 {start|stop}" >&2
+		exit 1
+		;;
+esac

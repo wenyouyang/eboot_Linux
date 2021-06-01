@@ -1,0 +1,148 @@
+
+# Android build commands
+$ lunch gordon_peak-userdebug
+$ make droid dist publish ALLOW_MISSING_DEPENDENCIES=true -j8
+$ make droid dist ANDROID_COMPILE_WITH_JACK=false -j8
+
+$ make droid dist ANDROID_COMPILE_WITH_JACK=false -j $(nproc)
+
+$ make droid dist publish ALLOW_MISSING_DEPENDENCIES=true -j $(nproc)
+
+$ lunch gordon_peak_acrn-userdebug
+$ make gptimage droid dist publish ALLOW_MISSING_DEPENDENCIES=true -j $(nproc)
+$ make gptimage droid dist publish ALLOW_MISSING_DEPENDENCIES=true -j8
+
+
+     34. bdstar_polaris-userdebug
+$ lunch bdstar_polaris_acrn-userdebug
+$ make gptimage droid dist publish ALLOW_MISSING_DEPENDENCIES=true -j $(nproc)
+$ make gptimage droid dist publish ALLOW_MISSING_DEPENDENCIES=true -j8	 
+	 
+
+$ make CFLAGS_MODULE=-fno-pic M=drivers/media/i2c/crlmodule/
+
+
+export PATH=../../prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/bin:$PATH
+
+
+
+$ scp wyang@137.202.172.140:/home/wyang/work/bdstar/android_release/1st/repotop/pub/gordon_peak/userdebug/gordon_peak-flashfiles-eng.wyang.zip .
+$ scp wyang@137.202.172.140:/home/wyang/work/bdstar/android_release/1st/unpack/android-as-a-guest/pub/gordon_peak/userdebug/gordon_peak-flashfiles-eng.wyang.zip .
+
+
+$ scp wyang@137.202.172.140:/home/wyang/work/bdstar/android_as_a_guest/src/pub/gordon_peak/userdebug/gordon_peak-flashfiles-eng.wyang.zip .
+							
+$ scp wyang@137.202.172.140:/home/wyang/work/bdstar/android_as_a_guest/src/kernel/4.14/drivers/media/i2c/ds90ub940.ko .
+$ scp wyang@137.202.172.140:/home/wyang/work/bdstar/android_as_a_guest/src/kernel/4.14/drivers/media/i2c/adv728x.ko .
+$ scp wyang@137.202.172.140:/home/wyang/work/bdstar/android_as_a_guest/src/out/target/product/gordon_peak/vendor/bin/earlyEvs .
+$ scp wyang@137.202.172.140:/home/wyang/work/bdstar/android_as_a_guest/src/hardware/intel/evs/interface/ipu_config_vendor.xml .
+$ scp wyang@137.202.172.140:/home/wyang/work/bdstar/android_as_a_guest/src/out/target/product/gordon_peak_acrn/vendor/bin/earlyEvs .
+
+$ scp wyang@137.202.172.140:/home/wyang/work/import_codes/android_ww17/repotop.tar.bz2 .
+							
+							
+$ scp wyang@137.202.172.140:/home/wyang/work/bdstar/android_as_a_guest/src/pub/gordon_peak_acrn/userdebug/gordon_peak_acrn.img.tar.gz .
+$ scp wyang@137.202.172.140:/home/wyang/work/bdstar/connenctos/build/tmp/deploy/images/mel-automotive-gr-mrb-acrn-sos/core-image-automotive-mel-automotive-gr-mrb-acrn-sos-20180621063600.rootfs.tar.gz .
+$ scp wyang@137.202.172.140:/home/wyang/work/bdstar/connenctos/build/tmp/deploy/images/mel-automotive-gr-mrb-acrn-sos/iasImageHypervisor_debug .
+
+$ scp wyang@137.202.172.109:/home/wyang/work/bdstar/android_as_a_guest/src/hardware/intel/evs/earlyEvs/ipu_config.xml .
+
+$ scp wyang@137.202.172.109:/home/wyang/work/bdstar/android_as_a_guest/src/device/intel/broxton/bdstar_polaris_acrn/init.rc .
+
+$ scp wyang@137.202.172.109:/home/wyang/work/linux/linux-apl-p/0001-add-initial-fpdlink3-driver.patch .
+
+
+
+find ./ -path './proc' -prune -o -name libcamhal_profile.xml 
+
+find ./ \( -path ./proc -o -path ./mnt -o -path ./dev \) -prune -o -name libcamhal_profile.xml 
+
+find ./ \( -path ./proc -o -path ./mnt -o -path ./dev \) -prune -o -name earlyEvs
+
+
+aplay -Dplughw:0,0 /usr/share/sounds/alsa/Rear_Center.wav
+
+make droid dist publish ALLOW_MISSING_DEPENDENCIES=true K414_KERNEL=true -j $(nproc) 2>&1 | tee build_android.log 
+
+make droid dist publish ALLOW_MISSING_DEPENDENCIES=true -j $(nproc) 2>&1 | tee build_android.log 
+
+$ du -c -s -h repotop/
+125G	repotop/
+125G	total
+
+
+repo forall -c 'ID=`git log --before="2016-06-28 23:00" --after="2010-01-01" -1 --pretty=format:"%H"`;git reset --hard $ID'
+repo forall -c 'ID=`git log --before="2018-05-07 23:00" --after="2018-01-01" -1 --pretty=format:"%H"`;git reset --hard $ID'
+
+repo forall -c 'ID=`git log --before="2018-05-16 23:00" --after="2016-01-01" -1 --pretty=format:"%H"`;git reset --hard $ID'
+repo forall -vc 'ID=`git log --before="2018-05-23 08:00" --after="2016-01-01" -1 --pretty=format:"%H"`;git reset --hard $ID'
+
+repo forall -vc "git reset --hard"
+
+repo forall -p -c 'git checkout oa/gordon_peak_cwp/a81/20180328-2018_ww09_f' | cat
+
+
+( find . -type d -name ".git" \
+  && find . -name ".gitignore" \
+  && find . -name ".gitmodules" ) | xargs rm -rf
+  
+  find . -name ".git*" -exec rm -R {} \;
+
+
+sudo apt-get install git gnu-efi libssl-dev libpciaccess-dev uuid-dev libsystemd-dev libevent-dev libxml2-dev libusb-1.0-0-dev
+
+
+$ scp wyang@137.202.172.109:/home/wyang/work/bdstar/android_as_a_guest/src/external/* .
+
+
+$ scp tciochina@134.86.122.25:/storage/tciochina/android-mentor-ap-ww17/out-bdstar_polaris_acrn-userdebug-4.14.25/target/product/bdstar_polaris_acrn/android.img.tar.bz2 .
+
+$ scp -r wyang@137.202.172.140:/home/wyang/Downloads/ .
+$ scp -r wyang@137.202.172.138:/mnt/hgfs/VM_shared/GP2.0/prebuilt/ .
+
+
+$ scp wyang@137.202.172.109:/home/wyang/work/bdstar/android_as_a_guest/src/pub/gordon_peak/userdebug/gordon_peak-flashfiles-eng.wyang.zip .
+$ scp -r wyang@137.202.172.109:/home/wyang/work/sysdk_downloads .
+$ scp -r guest@134.86.56.73:/home/guest/working-images-gp2.0 .
+
+$ scp guest@134.86.56.73:/home/guest/android-gp-2.0-built-image/gordon_peak_acrn.img .
+user name : guest@ 134.86.56.73
+password  : bdstar1234
+
+
+
+
+https://stash.alm.mentorg.com/projects/TPINTELAPLP/repos/acrn-devicemodel/pull-requests/3/overview
+
+
+git clone https://github.com/intel/iasimage.git iasimage
+
+
+
+repo init -u ssh://git@stash.alm.mentorg.com:7999/bdspol/manifests.git -b master -m dogwood/bdstar_polaris_dev.xml
+repo sync
+
+MEL_DISTRO=mel-automotive . ./scripts/setup-environment -l "mentor-bdstar-polaris-custom" mel-automotive-gr-mrb-acrn-sos
+
+bitbake core-image-automotive
+
+Be sure the following package are installed on the host machine Ubuntu 16.04:
+
+$ sudo apt install gcc \
+     git \
+     make \
+     gnu-efi \
+     libssl-dev \
+     libpciaccess-dev \
+     uuid-dev \
+     libsystemd-dev \
+     libevent-dev \
+     libxml2-dev \
+     libusb-1.0-0-dev \
+     python3 \
+     python3-pip \
+     libblkid-dev \
+     e2fslibs-dev
+	 
+$ sudo pip3 install kconfiglib
+

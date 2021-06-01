@@ -1,0 +1,2070 @@
+
+http://www.at91.com/linux4sam/bin/view/Linux4SAM/UsingIsi
+
+http://www.at91.com/linux4sam/bin/view/Linux4SAM/UsingAtmelDRMDriver
+
+http://penfret.rfo.atmel.com/twiki/bin/view/Software/TestLCD
+
+http://10.159.240.137/twiki/bin/view/Software/TestLCD
+
+http://www.linuxtv.org/downloads/v4l-dvb-apis/subdev.html
+
+https://peach.blender.org/download/
+
+ov7740 https://github.com/wpd/linux-at91/commit/a5deb3e77a8e09040ca8f4c95c6fce356dff7e43
+
+https://wiki.linaro.org/BenjaminGaignard/HWComposer_DRM
+
+https://git.linaro.org/people/benjamin.gaignard/gralloc.git
+
+http://rfolxts01.rfo.atmel.com/git/?p=linux;a=shortlog;h=refs/heads/sowu/at91-4.1-trunk/isi
+
+http://rfolxts01.rfo.atmel.com/git/?p=linux;a=shortlog;h=refs/heads/sowu/isc-v4l2-next
+
+git push rfo_linux  local/linux_next/master:sowu/isc-v4l2-next
+
+http://rfolxts01.rfo.atmel.com/git/?p=linux;a=shortlog;h=refs/heads/sowu/isc-v4l2-next
+
+http://rfolxts01.rfo.atmel.com/git/?p=linux;a=shortlog;h=refs/heads/at91-4.4-trunk/base_isc
+
+http://www.spinics.net/lists/linux-media/index.html#109731
+
+http://calman.spectracal.com/calman-colormatch.html 
+http://www.bing.com/search?q=colorchecker+software+free&pc=MOZI 
+
+android 4.4.2
+
+The best way is to create the v4l-subdevX device nodes (git grep v4l2_device_register_subdev_nodes).
+That way applications can directly set the subdev controls through that device node.
+
+You'll need to add a "depends on VIDEO_V4L2_SUBDEV_API" to the Kconfig.
+
+So the video node is used to control the ISC brightness, the v4l-subdev node is used to control
+the sensor's brightness.
+
+KD50G22-45TT-A5
+
+
+http://intra-shanghai.atmel.com/twiki/bin/view/Shanghai/UsingIsc
+
+https://en.wikipedia.org/wiki/ColorChecker
+
+to-select-common-camera-sensors
+
+
+ZXing barcode reader
+-----------------------------
+http://intra-shanghai.atmel.com/twiki/bin/view/Shanghai/IsiWikiPage#ZXing_barcode_reader
+http://intra-shanghai.atmel.com/twiki/bin/view/Shanghai/QtCameraDecoder
+
+https://github.com/glassechidna/zxing-cpp
+
+sowu@shaarm01:~/yocto/poky/build-atmel/tmp/deploy/images/sama5d2-xplained
+
+
+if (!isc->cur_frm && vb2_is_streaming(vb->vb2_queue)
+	    && list_empty(&isc->dma_queue)) {
+		isc->cur_frm = buf;
+		isc_start_dma(isc->regmap, isc->cur_frm,
+				      isc->current_fmt->reg_dctrl_dview);
+	} else
+
+
+
+s2255drv.c
+
+/* ISC Color Correction RR RG Register */
+#define ISC_CC_RR_RG	0x0000007c
+
+/* ISC Color Correction RB OR Register */
+#define ISC_CC_RB_OR	0x00000080
+
+/* ISC Color Correction GR GG Register */
+#define ISC_CC_GR_GG	0x00000084
+
+/* ISC Color Correction GB OG Register */
+#define ISC_CC_GB_OG	0x00000088
+
+/* ISC Color Correction BR BG Register */
+#define ISC_CC_BR_BG	0x0000008c
+
+/* ISC Color Correction BB OB Register */
+#define ISC_CC_BB_OB	0x00000090
+
+
+
+
+/* WB-->CFA-->CC-->GAM-->CSC-->CBC-->SUB422-->SUB420 */
+		REG_FIELD(ISC_WB_CTRL, 0, 0),
+		REG_FIELD(ISC_CFA_CTRL, 0, 0),
+		REG_FIELD(ISC_CC_CTRL, 0, 0),
+		REG_FIELD(ISC_GAM_CTRL, 0, 0),
+
+		REG_FIELD(ISC_GAM_CTRL, 1, 1),
+		REG_FIELD(ISC_GAM_CTRL, 2, 2),
+		REG_FIELD(ISC_GAM_CTRL, 3, 3),
+		REG_FIELD(ISC_CSC_CTRL, 0, 0),
+
+		REG_FIELD(ISC_CBC_CTRL, 0, 0),
+		REG_FIELD(ISC_SUB422_CTRL, 0, 0),
+		REG_FIELD(ISC_SUB420_CTRL, 0, 0),
+
+cat /sys/module/atmel_isc/parameters/sensor_preferred
+
+echo 0 > /sys/module/atmel_isc/parameters/sensor_preferred
+
+
+echo 1 > /sys/module/atmel_isc/parameters/sensor_preferred
+
+Stream #0:0: Video: rawvideo (YUY2 / 0x32595559), yuyv422, 640x480,
+
+v4l2-ctl -l    : lists all controls
+
+v4l2-ctl -c brightness=100
+
+v4l2-ctl -c contrast=10
+
+v4l2-ctl -c gamma=0
+
+v4l2-ctl -c white_balance_automatic=true
+
+
+v4l2-ctl -c white_balance_automatic=false
+
+
+RG RR
+RO RB
+GG GR
+GO GB
+BG BR
+BO BB
+
+
+devmem 0xf000807c 32 0x0f7d0213
+
+devmem 0xf0008080 32 0x1fe40fc2
+
+devmem 0xf0008084 32 0x010f0000
+
+devmem 0xf0008088 32 0x00000000
+
+devmem 0xf000808c 32 0x00000000
+
+devmem 0xf0008090 32 0x000000f6
+
+
+
+devmem 0xf000807c 32 0x00000100
+
+devmem 0xf0008080 32 0x00000000
+
+devmem 0xf0008084 32 0x01000000
+
+devmem 0xf0008088 32 0x00000000
+
+devmem 0xf000808c 32 0x00000000
+
+devmem 0xf0008090 32 0x00000100 
+
+
+
+Dir12345
+
+fswebcam -p -h
+
+ffmpeg -f video4linux2 -r 1 -s 640*480 -t 4 -i /dev/video0 -pix_fmt yuyv422 -f image2 -vcodec png image%d.png
+
+ffmpeg -f video4linux2 -r 1 -s vga -t 4 -i /dev/video0 -pix_fmt yuyv422 -f image2 -vcodec png image%d.png
+
+ffmpeg -f video4linux2 -r 1 -s vga -t 4 -i /dev/video0 -pix_fmt gbrg -f image2 -vcodec png image%d.png
+
+ffmpeg -f video4linux2 -r 1 -s vga -t 4 -i /dev/video0 -pix_fmt yuyv422 -f image2 --enable-filter=scale -vcodec png image%d.png
+
+ffmpeg -f video4linux2 -r 1 -s vga -t 4 -i /dev/video0 -pix_fmt yuyv422 -f image2 -vcodec png image%d.png
+
+ffmpeg -f video4linux2 -r 1 -s vga -t 4 -i /dev/video0 -pix_fmt yuv420p -f image2 -vcodec png image%d.png
+
+ffmpeg -f video4linux2 -r 1 -s vga -t 4 -i /dev/video0 -pix_fmt yuv422p -f image2 -vcodec png image%d.png
+
+ffmpeg -f video4linux2 -r 1 -s vga -t 4 -i /dev/video0 -pix_fmt sbggr -f image2 -vcodec png image%d.png
+
+
+
+fswebcam -S 20 -d /dev/video0 -p BAYER -r 640x480 bayer.jpg --dumpframe raw
+
+fswebcam -S 20 -d /dev/video0  -p YUYV -r 640x480 yuyv.jpg
+
+fswebcam -S 20 -d /dev/video0  -p GREY -r 640x480 grey.jpg
+
+fswebcam -S 20 -d /dev/video0 -p SGRBG8 -r 640x480 bayer_grbg8.jpg
+
+fswebcam -S 20 -d /dev/video0 -p BAYER -r 640x480 bayer.jpg
+
+fswebcam -S 20 -d /dev/video0 -p YUV420P 640x480 yuv420p.jpg
+
+fswebcam -S 20 -d /dev/video0 -p SBGGR8 -r 640x480 bggr.jpg
+
+fswebcam -S 20 -d /dev/video0 -p RGB565 -r 640x480 rgb565.jpg --dumpframe
+
+gst-launch v4l2src device="/dev/video0" ! video/x-raw-yuv,width=1600,height=1200 ! ffmpegcolorspace ! fbdevsink
+
+gst-launch v4l2src device="/dev/video0" ! video/x-raw-yuv,width=1024,height=600 ! ffmpegcolorspace ! fbdevsink
+
+gst-launch v4l2src device="/dev/video0" ! video/x-raw-yuv,width=800,height=600 ! ffmpegcolorspace ! fbdevsink
+
+gst-launch v4l2src device="/dev/video0" ! video/x-raw-yuv,width=640,height=480 ! ffmpegcolorspace ! fbdevsink
+
+gst-launch v4l2src device="/dev/video0" ! video/x-raw-yuv,width=320,height=240 ! ffmpegcolorspace ! fbdevsink
+
+
+fswebcam -S 20 -d /dev/video0 -p RGB565 -r 640x480 --dumpframe testraw
+
+
+   # gstreamer 0.10
+   gst-launch v4l2src device="/dev/video1" ! video/x-raw-yuv,width=640,height=480 ! ffmpegcolorspace ! fbdevsink
+   # gstreamer 1.0
+   gst-launch-1.0 v4l2src device="/dev/video1" ! video/x-raw,width=640,height=480 ! videoconvert ! fbdevsink
+
+
+ Depends on: MEDIA_SUPPORT [=y] && (MEDIA_CAMERA_SUPPORT [=y] || MEDIA_ANALOG_TV_SUPPORT [=n] || MEDIA_DIGITAL_TV_SUPPORT [=n])
+
+chmod 777 arch/arm/boot/dts/sama5d2.dtsi 
+chmod 777 arch/arm/boot/dts/at91-sama5d2_xplained.dts 
+
+
+tar -xvf output/images/rootfs.tar -C /nfsroot/sowu/rootfs
+chmod 777 -c /nfsroot/sowu/rootfs
+chmod 777 -c /nfsroot/sowu/rootfs/root/
+
+[<c0475cd0>] (isc_s_ctrl) from [<c0468a98>] (try_or_set_cluster+0x14c/0x364)
+[<c0468a98>] (try_or_set_cluster) from [<c0468f38>] (v4l2_s_ctrl+0x8c/0xd0)
+[<c0468f38>] (v4l2_s_ctrl) from [<c04612b8>] (v4l_s_ctrl+0x4c/0x104)
+[<c04612b8>] (v4l_s_ctrl) from [<c045d968>] (__video_do_ioctl+0x25c/0x2f0)
+[<c045d968>] (__video_do_ioctl) from [<c045f934>] (video_usercopy+0x120/0x490)
+[<c045f934>] (video_usercopy) from [<c045a628>] (v4l2_ioctl+0x9c/0xb8)
+[<c045a628>] (v4l2_ioctl) from [<c01b0398>] (do_vfs_ioctl+0x8c/0x8e4)
+[<c01b0398>] (do_vfs_ioctl) from [<c01b0c24>] (SyS_ioctl+0x34/0x58)
+[<c01b0c24>] (SyS_ioctl) from [<c01076a0>] (ret_fast_syscall+0x0/0x3c)
+
+
+
+	{ V4L2_PIX_FMT_YUV420, MEDIA_BUS_FMT_YUYV8_1_5X8,
+	  MEDIA_BUS_FMT_YUYV8_1_5X8, 12, ISC_PFE_CFG0_BPS_EIGHT,
+	  ISC_PFE_CFG0_BPS_EIGHT, ISC_BAY_CFG_BGBG,
+	  ISC_RLP_CFG_MODE_YYCC, ISC_DCFG_IMODE_YC420P | ISC_DCFG_YMBSIZE_BEATS8 | ISC_DCFG_CMBSIZE_BEATS8 ,
+	  ISC_DCTRL_DVIEW_PLANAR, 0x7fb, false, false },
+
+
+
+linux-media@vger.kernel.org
+
+FWD Life Insurance Company (Bermuda) Limited 
+
+wget https://git.kernel.org/cgit/linux/kernel/git/wfg/lkp-tests.git/plain/sbin/make.cross -O ~/bin/make.cross
+chmod +x ~/bin/make.cross
+make.cross ARCH=sparc64 
+
+export CROSS_COMPILE=arm-none-linux-gnueabi-
+export ARCH=arm
+. ~/.bashrc
+
+cat /sys/class/graphics/fb0/modes
+
+head -1 /sys/class/graphics/fb0/modes > /sys/class/graphics/fb0/mode
+
+dd count=1 ibs=300x280 if=/dev/urandom >/dev/fb0
+
+dd count=1 ibs=30000 if=/dev/urandom >/dev/fb0
+
+gst-launch-0.10 filesrc location=/root/I_See_You.mp4 ! avidemux ! mpeg2dec ! ffmpegcolorspace ! fbdevsink
+
+  # gstreamer 0.10
+   gst-launch v4l2src device="/dev/video0" ! video/x-raw-yuv,width=640,height=480 ! ffmpegcolorspace ! fbdevsink
+   # gstreamer 1.0
+   gst-launch-1.0 v4l2src device="/dev/video0" ! video/x-raw,width=640,height=480 ! videoconvert ! fbdevsink
+ 
+
+export PATH="$PATH:/home/sowu/bin:/home/sowu/u-boot/u-boot/tools/patman"
+export CROSS_COMPILE=/opt/CodeSourcery/arm-2013.05/bin/arm-none-linux-gnueabi-
+export ARCH=arm
+
+ /opt/CodeSourcery/arm-2013.05/bin/arm-none-linux-gnueabi-gcc Test.c -static -o test.out
+
+
+
+v4l2grab
+
+fbv 
+
+setenv bootargs $bootargs video=TMDS-1:800x600-16
+
+setenv bootargs $bootargs video=LVDS-1:480x272-16
+
+Device Drivers > Graphics support > Frame buffer Devices 
+<*> AT91/AT32 LCD Controller support 
+
+make ARCH=arm sama5_defconfig
+ 
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j 16
+
+
+make -i KERNEL_DIR=/home/sowu/linux-at91/linux-at91/ modules_install INSTALL_MOD_PATH=/home/sowu/linux-at91/kernel_modules ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-
+
+make -i KERNEL_DIR=/home/sowu/linux-at91/linux-at91/ modules_install INSTALL_MOD_PATH=/home/sowu/linux-at91/kernel_modules
+
+copy to /lib/modules
+
+./configure --host=/opt/CodeSourcery/arm-2013.05/bin/arm-none-linux-gnueabi- --without-jpeg
+make
+
+
+http://linuxtv.org/wiki/index.php/V4l-utils
+https://www.linuxtv.org/downloads/v4l-dvb-apis/control.html
+
+ov7740 2-0021: ov7740 Product ID 77:42 Manufacturer ID 7f:a2
+soc-camera-pdrv soc-camera-pdrv.0: Probing soc-camera-pdrv.0
+i2c i2c-2: OV7740 Probed
+
+    [media] atmel-isc: add isc driver code
+    
+    Add isc driver code
+
+commit 595571ebf2b655c27e2db794af050036c61e3a34
+Author: Songjun Wu <songjun.wu@atmel.com>
+Date:   Tue Nov 3 13:48:30 2015 +0800
+
+    [linux-4.1-at91] ARM: at91: DT binding for Class D audio amplifier driver
+    
+    DT binding documentation for classD driver.
+    
+    Signed-off-by: Songjun Wu <songjun.wu@atmel.com>
+
+commit b559fabba6c155b085ffba2b122e98bb2b27ccef
+Author: Songjun Wu <songjun.wu@atmel.com>
+Date:   Tue Nov 3 11:31:04 2015 +0800
+
+    [linux-4.1-at91] ARM: at91: add the Audio Class D Amplifier code
+    
+    Add driver for the digital imput to PWM output stereo class
+    D amplifier. It comes with filter, digitally controlled gain,
+    an equalizer and a dmphase filter
+    
+    Signed-off-by: Songjun Wu <songjun.wu@atmel.com>
+
+Linux 4.4.19
+85184740541c2b80b72ebfa46cfe065ec1d1058f
+
+ARM: at91/dt:
+
+
+[media] atmel-isc: set the format on the first open
+    
+    Set the current format on the first open.
+    
+
+
+uart3, pdmic
+
+tar -xvf output/images/rootfs.tar -C /nfsroot/sowu/rootfs
+
+git push rfo_linux local/Linux_4.4.19:at91-4.4-trunk/base_isc
+
+git push rfo_linux local/ov7740:at91-4.4-trunk/ov7740
+
+[video4linux2 @ 0x2f410] ioctl set time per frame(1/1) faile
+
+cp arch/arm/boot/dts/at91-sama5d2_xplained_pda4.dtb  /tftproot/sowu/sama5d2/
+cp arch/arm/boot/zImage /tftproot/sowu/sama5d2/
+
+cp arch/arm/boot/dts/at91-sama5d2_xplained.dtb  /tftproot/sowu/sama5d2/
+cp arch/arm/boot/zImage /tftproot/sowu/sama5d2/
+
+
+cp arch/arm/boot/dts/sama5d34ek_pda7.dtb  /tftproot/sowu/
+cp arch/arm/boot/zImage /tftproot/sowu/
+
+
+https://git.linuxtv.org/hverkuil/media_tree.git/tree/drivers/media/platform/atmel-isi.c?h=sama5d3
+
+
+setenv bootargs $bootargs video=HDMI-A-1:d video=LVDS-1:480x272-16
+
+setenv ethaddr 12:34:56:22:71:05;
+
+setenv autoload no; dhcp;
+
+setenv serverip 10.217.6.34;
+
+
+video=LVDS-1:800x480-16
+
+head -1 /sys/class/graphics/fb0/modes > /sys/class/graphics/fb0/mode
+
+setenv bootcmd 'tftp 0x21000000 sowu/at91-sama5d4ek.dtb; tftp 0x22000000 sowu/zImage;bootz 0x22000000 - 0x21000000'
+
+setenv bootargs 'console=ttyS0,115200n8 root=/dev/nfs rw nfsroot='$serverip':/nfsroot/sowu/rootfs-sama5d4ek/ ip=dhcp video=LVDS-1:480x272-16'
+
+setenv bootargs 'console=ttyS0,115200n8 root=/dev/nfs rw nfsroot='$serverip':/nfsroot/sowu/rootfs-sama5d4ek/ ip=dhcp video=LVDS-1:800x480-16'
+
+
+setenv bootargs 'console=ttyS0,57600n8 root=/dev/nfs rw nfsroot='$serverip':/nfsroot/sowu/rootfs/ ip=dhcp'
+
+
+
+
+setenv bootcmd 'tftp 0x21000000 sowu/sama5d2/at91-sama5d2_xplained.dtb; tftp 0x22000000 sowu/sama5d2/zImage;bootz 0x22000000 - 0x21000000';
+
+
+
+
+setenv bootcmd 'tftp 0x21000000 sowu/sama5d2/at91-sama5d2_xplained_pda4.dtb; tftp 0x22000000 sowu/sama5d2/zImage;bootz 0x22000000 - 0x21000000'; video=LVDS-1:480x272-16;
+
+
+setenv bootcmd 'tftp 0x21000000 sowu/sama5d2/at91-sama5d2_xplained_pda4.dtb; tftp 0x22000000 sowu/sama5d2/zImage;bootz 0x22000000 - 0x21000000';video=Unknown-1:480x272-16;
+
+
+setenv bootcmd 'tftp 0x21000000 sowu/sama5d34ek_pda7.dtb; tftp 0x22000000 sowu/zImage;bootz 0x22000000 - 0x21000000';video=LVDS-1:800x480-16;
+
+
+
+setenv bootargs 'console=ttyS0,57600n8 root=/dev/nfs rw nfsroot='$serverip':/nfsroot/sowu/rootfs/ ip=dhcp'
+
+setenv bootargs 'console=ttyS0,57600n8 root=/dev/nfs rw nfsroot='$serverip':/nfsroot/sowu/rootfs/ ip='$ipaddr''
+
+
+make CROSS_COMPILE=/opt/CodeSourcery/arm-2013.05/bin/arm-none-linux-gnueabi-
+
+
+tar -xvf /nfsroot/sowu/rootfs-sama5d2.tar -C /nfsroot/sowu/rootfs
+
+tar -zcvf /nfsroot/sowu/rootfs-sama5d2-embest.tar /nfsroot/sowu/rootfs
+
+tar -xvf /nfsroot/sowu/rootfs-sama5d2.tar -C /nfsroot/sowu/rootfs
+
+tar -xvf /nfsroot/sowu/rootfs-sama5d2.tar -C /nfsroot/sowu/rootfs
+
+tar -xvf /nfsroot/sowu/rootfs_ludovic.tar -C /nfsroot/sowu/rootfs
+
+tar -xvf output/images/rootfs.tar -C /nfsroot/sowu/rootfs
+
+
+chmod 777 -c /nfsroot/sowu/rootfs
+
+tar -xvf atmel-qt5-demo-image-sama5d2-xplained-20160819051155.rootfs.tar.gz -C /nfsroot/sowu/rootfs
+
+dos2unix 
+
+./configure --host=arm-linux-gnueabi-
+
+https://microchip.box.com/s/rig66cfrltw6mzf6vz360i3pf6vop9hl
+
+$ git-log|head
+ c2dacf7  python-tomako: bump to version 0.1.0.post1  Yegor Yefremov
+
+    ARM: at91/ISC: add ISC driver
+    
+
+
+[<c0415e6c>] (isc_async_complete) from [<c040ba58>] (v4l2_async_test_notify+0x12c/0x13c)
+[<c040ba58>] (v4l2_async_test_notify) from [<c040be80>] (v4l2_async_register_subdev+0x74/0xd0)
+[<c040be80>] (v4l2_async_register_subdev) from [<c03f8598>] (ov7740_probe+0x168/0x23c)
+[<c03f8598>] (ov7740_probe) from [<c03f261c>] (i2c_device_probe+0x184/0x210)
+[<c03f261c>] (i2c_device_probe) from [<c033d65c>] (driver_probe_device+0x1f4/0x2a4)
+[<c033d65c>] (driver_probe_device) from [<c033bec4>] (bus_for_each_drv+0x5c/0x88)
+[<c033bec4>] (bus_for_each_drv) from [<c033d3e8>] (__device_attach+0x9c/0xfc)
+[<c033d3e8>] (__device_attach) from [<c033ca6c>] (bus_probe_device+0x84/0x8c)
+[<c033ca6c>] (bus_probe_device) from [<c033b000>] (device_add+0x324/0x51c)
+[<c033b000>] (device_add) from [<c03f2ff4>] (i2c_new_device+0x118/0x188)
+[<c03f2ff4>] (i2c_new_device) from [<c03f35a4>] (i2c_register_adapter+0x2d4/0x4a0)
+[<c03f35a4>] (i2c_register_adapter) from [<c03f79f0>] (at91_twi_probe+0x3f8/0x658)
+[<c03f79f0>] (at91_twi_probe) from [<c033ebd8>] (platform_drv_probe+0x50/0xa0)
+[<c033ebd8>] (platform_drv_probe) from [<c033d65c>] (driver_probe_device+0x1f4/0x2a4)
+[<c033d65c>] (driver_probe_device) from [<c033bec4>] (bus_for_each_drv+0x5c/0x88)
+[<c033bec4>] (bus_for_each_drv) from [<c033d3e8>] (__device_attach+0x9c/0xfc)
+[<c033d3e8>] (__device_attach) from [<c033ca6c>] (bus_probe_device+0x84/0x8c)
+[<c033ca6c>] (bus_probe_device) from [<c033cea0>] (deferred_probe_work_func+0x60/0x8c)
+[<c033cea0>] (deferred_probe_work_func) from [<c0127034>] (process_one_work+0xfc/0x30c)
+[<c0127034>] (process_one_work) from [<c01273e4>] (worker_thread+0x168/0x4ac)
+[<c01273e4>] (worker_thread) from [<c012ba88>] (kthread+0xcc/0xe8)
+[<c012ba88>] (kthread) from [<c01074d8>] (ret_from_fork+0x14/0x3c)
+    
+[<c04157b0>] (isc_open) from [<c03fb2f4>] (v4l2_open+0x9c/0xdc)
+[<c03fb2f4>] (v4l2_open) from [<c0198864>] (chrdev_open+0x9c/0x13c)
+[<c0198864>] (chrdev_open) from [<c0192618>] (do_dentry_open+0xe4/0x2e4)
+[<c0192618>] (do_dentry_open) from [<c01a03d8>] (path_openat+0x160/0xe94)
+[<c01a03d8>] (path_openat) from [<c01a1dc0>] (do_filp_open+0x60/0xb4)
+[<c01a1dc0>] (do_filp_open) from [<c0193bd4>] (do_sys_open+0x11c/0x1c4)
+[<c0193bd4>] (do_sys_open) from [<c0107420>] (ret_fast_syscall+0x0/0x3c)
+
+/* Parallel bus IF sensor */
+	i2c_0: i2c@13860000 {
+		s5k6aa: sensor@3c {
+			compatible = "samsung,s5k6aafx";
+			reg = <0x3c>;
+			vddio-supply = <...>;
+
+			clock-frequency = <24000000>;
+			clocks = <&camera 1>;
+			clock-names = "mclk";
+
+			port {
+				s5k6aa_ep: endpoint {
+					remote-endpoint = <&fimc0_ep>;
+					bus-width = <8>;
+					hsync-active = <0>;
+					vsync-active = <1>;
+					pclk-sample = <1>;
+				};
+			};
+		};
+
+
+
+/**
+ * enum vb2_buffer_state - current video buffer state
+ * @VB2_BUF_STATE_DEQUEUED:	buffer under userspace control
+ * @VB2_BUF_STATE_PREPARING:	buffer is being prepared in videobuf
+ * @VB2_BUF_STATE_PREPARED:	buffer prepared in videobuf and by the driver
+ * @VB2_BUF_STATE_QUEUED:	buffer queued in videobuf, but not in driver
+ * @VB2_BUF_STATE_REQUEUEING:	re-queue a buffer to the driver
+ * @VB2_BUF_STATE_ACTIVE:	buffer queued in driver and possibly used
+ *				in a hardware operation
+ * @VB2_BUF_STATE_DONE:		buffer returned from driver to videobuf, but
+ *				not yet dequeued to userspace
+ * @VB2_BUF_STATE_ERROR:	same as above, but the operation on the buffer
+ *				has ended with an error, which will be reported
+ *				to the userspace when it is dequeued
+ */
+enum vb2_buffer_state {
+	VB2_BUF_STATE_DEQUEUED,
+	VB2_BUF_STATE_PREPARING,
+	VB2_BUF_STATE_PREPARED,
+	VB2_BUF_STATE_QUEUED,
+	VB2_BUF_STATE_REQUEUEING,
+	VB2_BUF_STATE_ACTIVE,
+	VB2_BUF_STATE_DONE,
+	VB2_BUF_STATE_ERROR,
+};
+
+
+----------------------------------------------------------------
+aplay 48k_16bit_stereo.wav &  //后台播放音乐
+
+echo mem >/sys/power/state   //休眠
+
+唤醒按一下sama5d4EK板子上的 PB_USER(PB2)
+----------------------------------------------------------------
+
+[09:59:59] 蒋向东: V4L2_PIX_FMT_YUV420
+[10:00:12] 蒋向东: 现在使用的是 DRM DRM_FORMAT_NV21
+
+视频内存分配的驱动也无法工作
+arch/arm/mach-at91/memalloc.c
+
+
+压缩 tar zcvf 文件名.tar.gz 目标名
+
+baudrate=57600
+bootargs=console=ttyS0,57600 root=/dev/mmcblk0p1 rw rootfstype=ext4 rootwait
+bootcmd=sf probe 0; sf read 0x21000000 0x60000 0xc000; sf read 0x22000000 0x6c000 0x394000; bootz 0x22000000 - 0x21000000
+bootdelay=1
+ethact=gmac0
+ethaddr=fc:c2:3d:02:f3:b5
+stderr=serial
+stdin=serial
+stdout=serial
+
+ * @stop_streaming:	called when 'streaming' state must be disabled; driver
+ *			should stop any DMA transactions or wait until they
+ *			finish and give back all buffers it got from buf_queue()
+ *			callback by calling @vb2_buffer_done() with either
+ *			VB2_BUF_STATE_DONE or VB2_BUF_STATE_ERROR; may use
+ *			vb2_wait_for_all_buffers() function
+-----------------------------------------------------------------------------------------------------
+Author: apoggiali <antonio.poggiali@datalogic.com>
+Date:   Thu Nov 12 17:51:30 2015 +0800
+
+    media: atmel-isc: fix out-of-buffers freeze bug
+    
+    Before this patch, when the buffer run out, there is no place to start_dma()
+    again. So that will cause the driver freezed.
+    
+    This patch will check whether buffer is run out in buffer_queue(). if yes, then
+    start_dma() again.
+    
+    buffer_queue() will be called when new buffer is available, so it's right place
+    to check buffer is run out or not.
+    
+    Signed-off-by: apoggiali <antonio.poggiali@datalogic.com>
+    [refined the commit log]
+    Signed-off-by: Josh Wu <josh.wu@atmel.com>
+
+diff --git a/drivers/media/platform/soc_camera/atmel-isc.c b/drivers/media/platform/soc_camera/atmel-isc
+index 85de214..3f474dc 100644
+--- a/drivers/media/platform/soc_camera/atmel-isc.c
++++ b/drivers/media/platform/soc_camera/atmel-isc.c
+@@ -396,8 +396,11 @@ static void buffer_queue(struct vb2_buffer *vb)
+ 
+        spin_lock_irqsave(&isc->lock, flags);
+        list_add(&buf->list, &isc->frame_buffer_list);
+-       if (isc->active == NULL)
++       if (isc->active == NULL) {
+                isc->active = buf;
++               if (vb2_is_streaming(vb->vb2_queue))
++                       start_dma(isc, buf);
++       }
+ 
+        spin_unlock_irqrestore(&isc->lock, flags);
+ }
+--------------------------------------------------------------------------------------------------
+
+[12/30/2015 16:55:59] 蒋向东:  ! ffmpegcolorspace ! fbdevsinkev/video0" ! video/x-raw-yuv,width=640,height=480 
+WARNING: erroneous pipeline: no element "fbdevsink"
+0 ! ffmpegcolorspace ! fbdevsinkv/video0" ! video/x-raw-yuv,width=640,height =48 
+WARNING: erroneous pipeline: no element "fbdevsink"
+[12/30/2015 17:00:46] 蒋向东: ffmpeg will quit
+[12/30/2015 17:00:49] 蒋向东: ffmpeg version 1.2.5 Copyright (c) 2000-2014 the FFmpeg developers
+  built on Dec 16 2015 17:33:23 with gcc 4.7.3 (Buildroot 2014.05-00049-gd0c47e4)
+  configuration: --enable-cross-compile --cross-prefix=/home/sowu/buildroot/buildroot-at91/output/host/usr/bin/arm-buildroot-linux-uclibcgnueabi- --sysroot=/home/sowu/buildroot/buildroot-at91/output/host/usr/arm-buildroot-linux-uclibcgnueabi/sysroot --host-cc=/usr/bin/gcc --arch=arm --target-os=linux --enable-static --enable-shared --prefix=/usr --enable-avfilter --disable-debug --disable-version3 --enable-logging --disable-pic --enable-optimizations --disable-extra-warnings --disable-ffprobe --enable-avdevice --enable-aatmel_isc f0008000.isc: Format 32315559 not found
+vcoatmel_isc f0008000.isc: Format 32315559 not found
+dec --enatmel_isc f0008000.isc: Format 32315659 not found
+aatmel_isc f0008000.isc: Format 50323234 not found
+ble-avformat --enable-swscale --enable-postproc --disable-x11grab --enable-network --disable-gray --enable-swscale-alpha --disable-small --enable-dct --enable-fft --enable-mdct --enable-rdft --disable-crystalhd --disable-vaapi --disable-vdpau --disable-dxva2 --enable-runtime-cpudetect --disable-hardcoded-tables --disable-memalign-hack --enable-hwaccels --disable-avisynth --disable-frei0r --disable-libopencore-amrnb --disable-libopencore-amrwb --disable-libopencv --disable-libdc139  libavutil      52. 18.100 / 52. 18.100
+  libavcodec     54. 92.100 / 54. 92.100
+  libavformat    54. 63.104 / 54. 63.104
+  libavdevice    54.  3.103 / 54.  3.103
+  libavfilter     3. 42.103 /  3. 42.103
+  libswscale      2.  2.100 /  2.  2.100
+  libswresample   0. 17.102 /  0. 17.102
+  libpostproc    52.  2.100 / 52.  2.100
+[video4linux2,v4l2 @ 0x4c5f0] The driver does not allow to change time per frame
+[video4linux2,v4l2 @ 0x4c5f0] Estimating duration from bitrate, this may be inaccurate
+Input #0, video4linux2,v4l2, from '/dev/video0':
+  Duration: N/A, start: 599.184487, bitrate: N/A
+    Stream #0:0: Video: rawvideo (YUY2 / 0x32595559), yuyv422, 640x480, 59.33 tbr, 1000k tbn, 1000k tbc
+-t is not an input option, keeping it for the next output; consider fixing your command line.
+Incompatible pixel format 'yuyv422' for codec 'png', auto-selecting format 'rgb24'
+Output #0, image2, to 'image%d.png':
+  Metadata:
+    encoder         : Lavf54.63.104
+    Stream #0:0: Video: png, rgb24, 640x480, q=2-31, 200 kb/s, 90k tbn, 1 tbc
+Stream mapping:
+  Stream #0:0 -> #0:0 (rawvideo -> png)
+Press [q] to stop, [?] for help
+frame=    4 fps=2.6------------[ cut here ]------------rate=N/A    
+ WARNING: CPU: 0 PID: 824 at /home/jiangxd/workspace/miura/kernel/drivers/media/v4l2-core/videobuf2-core.c:2135 __vb2_queue_cancel+0xe8/0x14c()
+qModules linked in:=
+0CPU: 0 PID: 824 Comm: ffmpeg Tainted: G        W      3.18.0-linux4sam_5.0-alpha7-00001-gb7fce31-dirty #4
+.[<c0012424>] (unwind_backtrace) from [<c00107c0>] (show_stack+0x10/0x14)
+0[<c00107c0>] (show_stack) from [<c001a198>] (warn_slowpath_common+0x64/0x84)
+ [<c001a198>] (warn_slowpath_common) from [<c001a1d4>] (warn_slowpath_null+0x1c/0x24)
+s[<c001a1d4>] (warn_slowpath_null) from [<c03176f8>] (__vb2_queue_cancel+0xe8/0x14c)
+i[<c03176f8>] (__vb2_queue_cancel) from [<c031834c>] (vb2_internal_streamoff+0x30/0xc4)
+z[<c031834c>] (vb2_internal_streamoff) from [<c031cbd8>] (soc_camera_streamoff+0xa0/0xc8)
+e[<c031cbd8>] (soc_camera_streamoff) from [<c0304eb4>] (v4l_streamoff+0x18/0x1c)
+=[<c0304eb4>] (v4l_streamoff) from [<c0306950>] (__video_do_ioctl+0x22c/0x29c)
+N[<c0306950>] (__video_do_ioctl) from [<c0306edc>] (video_usercopy+0x118/0x468)
+/[<c0306edc>] (video_usercopy) from [<c0303650>] (v4l2_ioctl+0xf8/0x13c)
+A[<c0303650>] (v4l2_ioctl) from [<c00992dc>] (do_vfs_ioctl+0x78/0x548)
+ [<c00992dc>] (do_vfs_ioctl) from [<c00997e0>] (SyS_ioctl+0x34/0x58)
+t[<c00997e0>] (SyS_ioctl) from [<c000e400>] (ret_fast_syscall+0x0/0x30)
+i---[ end trace f178a0eaeb2adfc6 ]---
+frame=    4 fps=2.5 q=0.0 Lsize=N/A time=00:00:04.00 bitrate=N/A    
+video:144kB audio:0kB subtitle:0 global headers:0kB muxing overhead -100.014910%
+
+----------------------------------------------------------------------------------------------------
+E/hwcomposer( 1036): Set DRM fb:19 (81,16)(357,209)
+E/hwcomposer( 1036):   drmModeSetPlane failed fd:19 (22) (357,209)
+E/hwcomposer( 1036): Set DRM fb:20 (0,0)(480,19)
+E/hwcomposer( 1036): Created DRM fb:21 (480,272)
+E/hwcomposer( 1036): Set DRM fb:15 (0,19)(480,253)
+E/hwcomposer( 1036): Set DRM fb:19 (15,3)(457,260)
+E/hwcomposer( 1036):   drmModeSetPlane failed fd:19 (22) (457,260)
+E/hwcomposer( 1036): Set DRM fb:20 (0,0)(480,19
+
+  ffmpeg -r 25 -s vga -t 20 -pix_fmt yuyv422 -f video4linux2 -i /dev/video0 video.avi
+----------------------------------------------------------------------------------------------------
+
+[14:58:30] 蒋向东: 一套是 gstreamer
+[14:58:36] 蒋向东: 一套是 openmax
+
+[14:58:44] 蒋向东: Linux BSP 用的 gst
+[14:58:55] 蒋向东: android 用的 openmax
+---------------------------------------------------------------------------------------------------------
+
+[<c041544c>] (isc_set_default_fmt) from [<c04158c0>] (isc_open+0x100/0x128)
+[<c04158c0>] (isc_open) from [<c03fb320>] (v4l2_open+0x9c/0xdc)
+[<c03fb320>] (v4l2_open) from [<c0198864>] (chrdev_open+0x9c/0x13c)
+[<c0198864>] (chrdev_open) from [<c0192618>] (do_dentry_open+0xe4/0x2e4)
+[<c0192618>] (do_dentry_open) from [<c01a03d8>] (path_openat+0x160/0xe94)
+[<c01a03d8>] (path_openat) from [<c01a1dc0>] (do_filp_open+0x60/0xb4)
+[<c01a1dc0>] (do_filp_open) from [<c0193bd4>] (do_sys_open+0x11c/0x1c4)
+[<c0193bd4>] (do_sys_open) from [<c0107420>] (ret_fast_syscall+0x0/0x3c)
+
+
+--- Capturing frame...
+Skipping 20 frames...
+isc_intsr=0x8000303, isc_intmask=0x100
+isc_intsr=0x8000323, isc_intmask=0x100
+isc_intsr=0x8000323, isc_intmask=0x100
+isc_intsr=0x8000323, isc_intmask=0x100
+isc_intsr=0x8000323, isc_intmask=0x100
+isc_intsr=0x8000323, isc_intmask=0x100
+isc_intsr=0x8000323, isc_intmask=0x100
+isc_intsr=0x8000323, isc_intmask=0x100
+isc_intsr=0x8000323, isc_intmask=0x100
+isc_intsr=0x8000323, isc_intmask=0x100
+isc_intsr=0x8000323, isc_intmask=0x100
+isc_intsr=0x8000323, isc_intmask=0x100
+isc_intsr=0x8000323, isc_intmask=0x100
+isc_intsr=0x8000323, isc_intmask=0x100
+isc_intsr=0x8000323, isc_intmask=0x100
+isc_intsr=0x8000323, isc_intmask=0x100
+isc_intsr=0x8000323, isc_intmask=0x100
+isc_intsr=0x8000323, isc_intmask=0x100
+isc_intsr=0x8000323, isc_intmask=0x100
+isc_intsr=0x8000323, isc_intmask=0x100
+Capturing 1 frames...
+isc_intsr=0x8000323, isc_intmask=0x100
+isc_intsr=0x8000323, isc_intmask=0x100
+isc_intsr=0x8000323, isc_intmask=0x100
+Caisc_intsr=0x8000023, isc_intmask=0x120
+pisc_stop_streaming: 1 isc->cur_frm=decc6c00
+tured 21 frames in 2.02 seconds. (10 fps)
+isc_intsr=0x8000303, isc_intmask=0x120
+ ### isc_intsr=0x8000303, isc_intmask=0x120
+isc_intsr=0x8000023, isc_intmask=0x120
+isc_stop_streaming: 2 isc->cur_frm=  (null)
+
+
+/* Set image size to 640 X 480 */
+    ISI->ISI_CFG2 = ISI_CFG2_IM_VSIZE(480 - 1) + ISI_CFG2_IM_HSIZE(640 - 1);
+/* Input image in grayscale-coded, and Grayscale Pixel Format in 2 pixels per word.
+    ISI->ISI_CFG2 |= ISI_CFG2_GRAYSCALE;
+/* Set preview size to 320 X 480
+    ISI->ISI_PSIZE = ISI_PSIZE_PREV_VSIZE(480 - 1) + ISI_PSIZE_PREV_HSIZE ((320 - 1)<< 16);
+/* Set ISI Preview Decimation Factor 
+    ISI->ISI_PDECF = 16;
+
+
+
+[media] atmel-isc: add the isc pipeline function
+
+Image Sensor Controller has an internal image processor.
+It can convert raw format to the other formats, like
+RGB565, YUV420P. A module parameter 'sensor_preferred'
+is used to enable or disable the pipeline function.
+Some v4l2 controls are added to tuning the image when
+the pipeline function is enabled.
+
+Signed-off-by: Songjun Wu <songjun.wu@microchip.com>
+Series-to: nicolas.ferre@microchip.com
+Series-cc: linux-arm-kernel@lists.infradead.org
+
+
+
+
+[media] atmel-isc: add the Image Sensor Controller code
+
+Add driver for the Image Sensor Controller. It manages
+incoming data from a parallel based CMOS/CCD sensor.
+It has an internal image processor, also integrates a 
+triple channel direct memory access controller master
+interface.
+
+Signed-off-by: Songjun Wu <songjun.wu@atmel.com>
+Series-to: laurent.pinchart@ideasonboard.com
+Series-to: nicolas.ferre@atmel.com
+Series-to: boris.brezillon@free-electrons.com
+Series-to: alexandre.belloni@free-electrons.com
+Series-version: 4
+Series-changes: 4
+- Modify the isc clock code since the dt is changed.
+
+Series-changes: 3
+- Add pm runtime feature.
+- Modify the isc clock code since the dt is changed.
+
+Series-changes: 2
+- Add "depends on COMMON_CLK" and "VIDEO_V4L2_SUBDEV_API"
+  in Kconfig file.
+- Correct typos and coding style according to Laurent's remarks
+- Delete the loop while in 'isc_clk_enable' function.
+- Replace 'hsync_active', 'vsync_active' and 'pclk_sample'
+  with 'pfe_cfg0' in struct isc_subdev_entity.
+- Add the code to support VIDIOC_CREATE_BUFS in 
+  'isc_queue_setup' function.
+- Invoke isc_config to configure register in 
+  'isc_start_streaming' function.
+- Add the struct completion 'comp' to synchronize with 
+  the frame end interrupt in 'isc_stop_streaming' function.
+- Check the return value of the clk_prepare_enable 
+  in 'isc_open' function.
+- Set the default format in 'isc_open' function.
+- Add an exit condition in the loop while in 'isc_config'.
+- Delete the hardware setup operation in 'isc_set_format'.
+- Refuse format modification during streaming 
+  in 'isc_s_fmt_vid_cap' function.
+- Invoke v4l2_subdev_alloc_pad_config to allocate and 
+  initialize the pad config in 'isc_async_complete' function.
+- Remove the '.owner  = THIS_MODULE,' in atmel_isc_driver.
+- Replace the module_platform_driver_probe() with 
+  module_platform_driver(). 
+
+Cover-letter:
+[media] atmel-isc: add driver for Atmel ISC
+The Image Sensor Controller driver includes two parts.
+1) Driver code to implement the ISC function.
+2) Device tree binding documentation, it describes how 
+   to add the ISC in device tree.
+END
+
+
+[media] atmel-isc: DT binding for Image Sensor Controller driver
+
+DT binding documentation for ISC driver.
+
+Signed-off-by: Songjun Wu <songjun.wu@atmel.com>
+Series-to: laurent.pinchart@ideasonboard.com
+Series-to: nicolas.ferre@atmel.com
+Series-to: robh@kernel.org
+Series-to: boris.brezillon@free-electrons.com
+Series-to: alexandre.belloni@free-electrons.com
+Series-changes: 4
+- Remove the isc clock nodes.
+
+Series-changes: 3
+- Remove the 'atmel,sensor-preferred'.
+- Modify the isc clock node according to the Rob's remarks.
+
+Series-changes: 2
+- Remove the unit address of the endpoint.
+- Add the unit address to the clock node.
+- Avoid using underscores in node names.
+- Drop the "0x" in the unit address of the i2c node.
+- Modify the description of 'atmel,sensor-preferred'.
+- Add the description for the ISC internal clock.
+
+
+
+
+[media] atmel-isc: add the Image Sensor Controller code
+
+Add driver for the Image Sensor Controller. It manages
+incoming data from a parallel based CMOS/CCD sensor.
+It has an internal image processor, also integrates a 
+triple channel direct memory access controller master
+interface.
+
+Signed-off-by: Songjun Wu <songjun.wu@atmel.com>
+Series-to: laurent.pinchart@ideasonboard.com
+Series-to: nicolas.ferre@atmel.com
+Series-to: boris.brezillon@free-electrons.com
+Series-to: alexandre.belloni@free-electrons.com
+Series-cc: linux-arm-kernel@lists.infradead.org
+Series-version: 5
+Series-changes: 5
+- Modify the macro definition and the related code.
+
+Series-changes: 4
+- Modify the isc clock code since the dt is changed.
+
+Series-changes: 3
+- Add pm runtime feature.
+- Modify the isc clock code since the dt is changed.
+
+Series-changes: 2
+- Add "depends on COMMON_CLK" and "VIDEO_V4L2_SUBDEV_API"
+  in Kconfig file.
+- Correct typos and coding style according to Laurent's remarks
+- Delete the loop while in 'isc_clk_enable' function.
+- Replace 'hsync_active', 'vsync_active' and 'pclk_sample'
+  with 'pfe_cfg0' in struct isc_subdev_entity.
+- Add the code to support VIDIOC_CREATE_BUFS in 
+  'isc_queue_setup' function.
+- Invoke isc_config to configure register in 
+  'isc_start_streaming' function.
+- Add the struct completion 'comp' to synchronize with 
+  the frame end interrupt in 'isc_stop_streaming' function.
+- Check the return value of the clk_prepare_enable 
+  in 'isc_open' function.
+- Set the default format in 'isc_open' function.
+- Add an exit condition in the loop while in 'isc_config'.
+- Delete the hardware setup operation in 'isc_set_format'.
+- Refuse format modification during streaming 
+  in 'isc_s_fmt_vid_cap' function.
+- Invoke v4l2_subdev_alloc_pad_config to allocate and 
+  initialize the pad config in 'isc_async_complete' function.
+- Remove the '.owner  = THIS_MODULE,' in atmel_isc_driver.
+- Replace the module_platform_driver_probe() with 
+  module_platform_driver(). 
+
+Cover-letter:
+[media] atmel-isc: add driver for Atmel ISC
+The Image Sensor Controller driver includes two parts.
+1) Driver code to implement the ISC function.
+2) Device tree binding documentation, it describes how 
+   to add the ISC in device tree.
+END
+
+
+[media] atmel-isc: DT binding for Image Sensor Controller driver
+
+DT binding documentation for ISC driver.
+
+Signed-off-by: Songjun Wu <songjun.wu@atmel.com>
+Series-to: laurent.pinchart@ideasonboard.com
+Series-to: nicolas.ferre@atmel.com
+Series-to: robh@kernel.org
+Series-to: alexandre.belloni@free-electrons.com
+Series-cc: linux-arm-kernel@lists.infradead.org
+Series-cc: linux-media@vger.kernel.org 
+Series-changes: 5
+- Add clock names.
+
+Series-changes: 4
+- Remove the isc clock nodes.
+
+Series-changes: 3
+- Remove the 'atmel,sensor-preferred'.
+- Modify the isc clock node according to the Rob's remarks.
+
+Series-changes: 2
+- Remove the unit address of the endpoint.
+- Add the unit address to the clock node.
+- Avoid using underscores in node names.
+- Drop the "0x" in the unit address of the i2c node.
+- Modify the description of 'atmel,sensor-preferred'.
+- Add the description for the ISC internal clock.
+
+
+
+[media] atmel-isc: add the Image Sensor Controller code
+
+Add driver for the Image Sensor Controller. It manages
+incoming data from a parallel based CMOS/CCD sensor.
+It has an internal image processor, also integrates a 
+triple channel direct memory access controller master
+interface.
+
+Signed-off-by: Songjun Wu <songjun.wu@microchip.com>
+Series-to: nicolas.ferre@atmel.com
+Series-cc: laurent.pinchart@ideasonboard.com
+Series-cc: linux-arm-kernel@lists.infradead.org
+Series-cc: linux-media@vger.kernel.org 
+Series-version: 6
+Series-changes: 5
+- Modify the macro definition and the related code.
+
+Series-changes: 4
+- Modify the isc clock code since the dt is changed.
+
+Series-changes: 3
+- Add pm runtime feature.
+- Modify the isc clock code since the dt is changed.
+
+Series-changes: 2
+- Add "depends on COMMON_CLK" and "VIDEO_V4L2_SUBDEV_API"
+  in Kconfig file.
+- Correct typos and coding style according to Laurent's remarks
+- Delete the loop while in 'isc_clk_enable' function.
+- Replace 'hsync_active', 'vsync_active' and 'pclk_sample'
+  with 'pfe_cfg0' in struct isc_subdev_entity.
+- Add the code to support VIDIOC_CREATE_BUFS in 
+  'isc_queue_setup' function.
+- Invoke isc_config to configure register in 
+  'isc_start_streaming' function.
+- Add the struct completion 'comp' to synchronize with 
+  the frame end interrupt in 'isc_stop_streaming' function.
+- Check the return value of the clk_prepare_enable 
+  in 'isc_open' function.
+- Set the default format in 'isc_open' function.
+- Add an exit condition in the loop while in 'isc_config'.
+- Delete the hardware setup operation in 'isc_set_format'.
+- Refuse format modification during streaming 
+  in 'isc_s_fmt_vid_cap' function.
+- Invoke v4l2_subdev_alloc_pad_config to allocate and 
+  initialize the pad config in 'isc_async_complete' function.
+- Remove the '.owner  = THIS_MODULE,' in atmel_isc_driver.
+- Replace the module_platform_driver_probe() with 
+  module_platform_driver(). 
+
+Cover-letter:
+[media] atmel-isc: add driver for Atmel ISC
+The Image Sensor Controller driver includes two parts.
+1) Driver code to implement the ISC function.
+2) Device tree binding documentation, it describes how 
+   to add the ISC in device tree.
+
+Test result with v4l-utils 1.10.1
+# v4l2-compliance -f
+Driver Info:
+        Driver name   : atmel_isc
+        Card type     : Atmel Image Sensor Controller
+        Bus info      : platform:atmel_isc f0008000.isc
+        Driver version: 4.7.0
+        Capabilities  : 0x84200001
+                Video Capture
+                Streaming
+                Extended Pix Format
+                Device Capabilities
+        Device Caps   : 0x04200001
+                Video Capture
+                Streaming
+                Extended Pix Format
+
+Compliance test for device /dev/video0 (not using libv4l2):
+
+Required ioctls:
+        test VIDIOC_QUERYCAP: OK
+
+Allow for multiple opens:
+        test second video open: OK
+        test VIDIOC_QUERYCAP: OK
+        test VIDIOC_G/S_PRIORITY: OK
+
+Debug ioctls:
+        test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+        test VIDIOC_LOG_STATUS: OK (Not Supported)
+
+Input ioctls:
+        test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+        test VIDIOC_ENUMAUDIO: OK (Not Supported)
+        test VIDIOC_G/S/ENUMINPUT: OK
+        test VIDIOC_G/S_AUDIO: OK (Not Supported)
+        Inputs: 1 Audio Inputs: 0 Tuners: 0
+
+Output ioctls:
+        test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+        test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+        test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+        Outputs: 0 Audio Outputs: 0 Modulators: 0
+
+Input/Output configuration ioctls:
+        test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+        test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+        test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+        test VIDIOC_G/S_EDID: OK (Not Supported)
+
+Test input 0:
+
+        Control ioctls:
+                test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK (Not Supported)
+                test VIDIOC_QUERYCTRL: OK (Not Supported)
+                test VIDIOC_G/S_CTRL: OK (Not Supported)
+                test VIDIOC_G/S/TRY_EXT_CTRLS: OK (Not Supported)
+                test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK (Not Supported)
+                test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+                Standard Controls: 0 Private Controls: 0
+
+        Format ioctls:
+                test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+                test VIDIOC_G/S_PARM: OK
+                test VIDIOC_G_FBUF: OK (Not Supported)
+                test VIDIOC_G_FMT: OK
+                test VIDIOC_TRY_FMT: OK
+                test VIDIOC_S_FMT: OK
+                test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+                test Cropping: OK (Not Supported)
+                test Composing: OK (Not Supported)
+                test Scaling: OK (Not Supported)
+
+        Codec ioctls:
+                test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+                test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+                test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+
+        Buffer ioctls:
+                test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+                test VIDIOC_EXPBUF: OK
+
+Test input 0:
+
+Stream using all formats:
+        test MMAP for Format BA81, Frame Size 640x480:
+                Stride 640, Field None: OK
+        test MMAP for Format YUYV, Frame Size 640x480:
+                Stride 1280, Field None: OK
+
+Total: 44, Succeeded: 44, Failed: 0, Warnings: 0
+END
+
+
+[media] atmel-isc: DT binding for Image Sensor Controller driver
+
+DT binding documentation for ISC driver.
+
+Signed-off-by: Songjun Wu <songjun.wu@microchip.com>
+Series-to: nicolas.ferre@atmel.com
+Series-to: robh@kernel.org
+Series-cc: laurent.pinchart@ideasonboard.com
+Series-cc: linux-media@vger.kernel.org 
+Series-cc: linux-arm-kernel@lists.infradead.org
+Series-changes: 6
+- Add "iscck" and "gck" to clock-names.
+
+Series-changes: 5
+- Add clock-output-names.
+
+Series-changes: 4
+- Remove the isc clock nodes.
+
+Series-changes: 3
+- Remove the 'atmel,sensor-preferred'.
+- Modify the isc clock node according to the Rob's remarks.
+
+Series-changes: 2
+- Remove the unit address of the endpoint.
+- Add the unit address to the clock node.
+- Avoid using underscores in node names.
+- Drop the "0x" in the unit address of the i2c node.
+- Modify the description of 'atmel,sensor-preferred'.
+- Add the description for the ISC internal clock.
+
+Acked-by: Rob Herring <robh@kernel.org>
+
+
+Hi Songjun,
+
+First of all, please CC patch 2/2 to linux-media as well the next time you post this.
+I only see 1/2 on the mailinglist, and we need both.
+
+Secondly, before I can accept it you need to run the v4l2-compliance test first and I need to see the output of that test.
+
+The compliance test is here: https://git.linuxtv.org/v4l-utils.git. Always compile it from the repository so you know you are using the latest most up to date version.
+
+Since this driver supports multiple pixelformats you need to test with the -f option, which tests streaming for all pixelformats.
+
+Obviously, there shouldn't be any FAILs :-)
+
+I greatly simplifies the code review if I know it passes the compliance test.
+
+
+
+
+email.microchip.com
+MCHP-Main
+
+
+Sensor output raw format.
+
+
+
+# v4l2-compliance -f
+Driver Info:
+        Driver name   : atmel_isc
+        Card type     : Atmel Image Sensor Controller
+        Bus info      : platform:atmel_isc f0008000.isc
+        Driver version: 4.7.0
+        Capabilities  : 0x84200001
+                Video Capture
+                Streaming
+                Extended Pix Format
+                Device Capabilities
+        Device Caps   : 0x04200001
+                Video Capture
+                Streaming
+                Extended Pix Format
+
+Compliance test for device /dev/video0 (not using libv4l2):
+
+Required ioctls:
+        test VIDIOC_QUERYCAP: OK
+
+Allow for multiple opens:
+        test second video open: OK
+        test VIDIOC_QUERYCAP: OK
+        test VIDIOC_G/S_PRIORITY: OK
+
+Debug ioctls:
+        test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+        test VIDIOC_LOG_STATUS: OK (Not Supported)
+
+Input ioctls:
+        test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+        test VIDIOC_ENUMAUDIO: OK (Not Supported)
+        test VIDIOC_G/S/ENUMINPUT: OK
+        test VIDIOC_G/S_AUDIO: OK (Not Supported)
+        Inputs: 1 Audio Inputs: 0 Tuners: 0
+
+Output ioctls:
+        test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+        test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+        test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+        Outputs: 0 Audio Outputs: 0 Modulators: 0
+
+Input/Output configuration ioctls:
+        test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+        test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+        test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+        test VIDIOC_G/S_EDID: OK (Not Supported)
+
+Test input 0:
+
+        Control ioctls:
+                test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK (Not Supported)
+                test VIDIOC_QUERYCTRL: OK (Not Supported)
+                test VIDIOC_G/S_CTRL: OK (Not Supported)
+                test VIDIOC_G/S/TRY_EXT_CTRLS: OK (Not Supported)
+                test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK (Not Supported)
+                test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+                Standard Controls: 0 Private Controls: 0
+
+        Format ioctls:
+                test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+                test VIDIOC_G/S_PARM: OK
+                test VIDIOC_G_FBUF: OK (Not Supported)
+                test VIDIOC_G_FMT: OK
+                test VIDIOC_TRY_FMT: OK
+                test VIDIOC_S_FMT: OK
+                test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+                test Cropping: OK (Not Supported)
+                test Composing: OK (Not Supported)
+                test Scaling: OK (Not Supported)
+
+        Codec ioctls:
+                test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+                test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+                test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+
+        Buffer ioctls:
+                test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+                test VIDIOC_EXPBUF: OK
+
+Test input 0:
+
+Stream using all formats:
+        test MMAP for Format BA81, Frame Size 640x480:
+                Stride 640, Field None: OK
+        test MMAP for Format YUYV, Frame Size 640x480:
+                Stride 1280, Field None: OK
+
+Total: 44, Succeeded: 44, Failed: 0, Warnings: 0
+
+---------------------------------------------------------------------------------
+
+[media] atmel-isc: add the Image Sensor Controller code
+
+Add driver for the Image Sensor Controller. It manages
+incoming data from a parallel based CMOS/CCD sensor.
+It has an internal image processor, also integrates a 
+triple channel direct memory access controller master
+interface.
+
+Signed-off-by: Songjun Wu <songjun.wu@microchip.com>
+Series-to: nicolas.ferre@atmel.com
+Series-cc: laurent.pinchart@ideasonboard.com
+Series-cc: linux-arm-kernel@lists.infradead.org
+Series-cc: linux-media@vger.kernel.org 
+Series-version: 7
+Series-changes: 7
+- Add enum_framesizes and enum_frameintervals.
+- Call s_stream(0) when stream start fail.
+- Fill the device_caps field of struct video_device
+  with V4L2_CAP_STREAMING and V4L2_CAP_VIDEO_CAPTURE.
+- Initialize the dev of struct vb2_queue.
+- Set field to FIELD_NONE if the pix field is not supported.
+- Return the result directly when call g/s_parm of subdev.
+
+Series-changes: 5
+- Modify the macro definition and the related code.
+
+Series-changes: 4
+- Modify the isc clock code since the dt is changed.
+
+Series-changes: 3
+- Add pm runtime feature.
+- Modify the isc clock code since the dt is changed.
+
+Series-changes: 2
+- Add "depends on COMMON_CLK" and "VIDEO_V4L2_SUBDEV_API"
+  in Kconfig file.
+- Correct typos and coding style according to Laurent's remarks
+- Delete the loop while in 'isc_clk_enable' function.
+- Replace 'hsync_active', 'vsync_active' and 'pclk_sample'
+  with 'pfe_cfg0' in struct isc_subdev_entity.
+- Add the code to support VIDIOC_CREATE_BUFS in 
+  'isc_queue_setup' function.
+- Invoke isc_config to configure register in 
+  'isc_start_streaming' function.
+- Add the struct completion 'comp' to synchronize with 
+  the frame end interrupt in 'isc_stop_streaming' function.
+- Check the return value of the clk_prepare_enable 
+  in 'isc_open' function.
+- Set the default format in 'isc_open' function.
+- Add an exit condition in the loop while in 'isc_config'.
+- Delete the hardware setup operation in 'isc_set_format'.
+- Refuse format modification during streaming 
+  in 'isc_s_fmt_vid_cap' function.
+- Invoke v4l2_subdev_alloc_pad_config to allocate and 
+  initialize the pad config in 'isc_async_complete' function.
+- Remove the '.owner  = THIS_MODULE,' in atmel_isc_driver.
+- Replace the module_platform_driver_probe() with 
+  module_platform_driver(). 
+
+Cover-letter:
+[media] atmel-isc: add driver for Atmel ISC
+The Image Sensor Controller driver includes two parts.
+1) Driver code to implement the ISC function.
+2) Device tree binding documentation, it describes how 
+   to add the ISC in device tree.
+
+Test result with v4l-utils.
+# v4l2-compliance -f
+v4l2-compliance SHA   : not available
+
+Driver Info:
+        Driver name   : atmel_isc
+        Card type     : Atmel Image Sensor Controller
+        Bus info      : platform:atmel_isc f0008000.isc
+        Driver version: 4.7.0
+        Capabilities  : 0x84200001
+                Video Capture
+                Streaming
+                Extended Pix Format
+                Device Capabilities
+        Device Caps   : 0x04200001
+                Video Capture
+                Streaming
+                Extended Pix Format
+
+Compliance test for device /dev/video0 (not using libv4l2):
+
+Required ioctls:
+        test VIDIOC_QUERYCAP: OK
+
+Allow for multiple opens:
+        test second video open: OK
+        test VIDIOC_QUERYCAP: OK
+        test VIDIOC_G/S_PRIORITY: OK
+        test for unlimited opens: OK
+
+Debug ioctls:
+        test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+        test VIDIOC_LOG_STATUS: OK (Not Supported)
+
+Input ioctls:
+        test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+        test VIDIOC_ENUMAUDIO: OK (Not Supported)
+        test VIDIOC_G/S/ENUMINPUT: OK
+        test VIDIOC_G/S_AUDIO: OK (Not Supported)
+        Inputs: 1 Audio Inputs: 0 Tuners: 0
+
+Output ioctls:
+        test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+        test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+        test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+        Outputs: 0 Audio Outputs: 0 Modulators: 0
+
+Input/Output configuration ioctls:
+        test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+        test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+        test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+        test VIDIOC_G/S_EDID: OK (Not Supported)
+
+Test input 0:
+
+        Control ioctls:
+                test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK (Not Supported)
+                test VIDIOC_QUERYCTRL: OK (Not Supported)
+                test VIDIOC_G/S_CTRL: OK (Not Supported)
+                test VIDIOC_G/S/TRY_EXT_CTRLS: OK (Not Supported)
+                test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK (Not Supported)
+                test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+                Standard Controls: 0 Private Controls: 0
+
+        Format ioctls:
+                test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+                test VIDIOC_G/S_PARM: OK
+                test VIDIOC_G_FBUF: OK (Not Supported)
+                test VIDIOC_G_FMT: OK
+                test VIDIOC_TRY_FMT: OK
+                test VIDIOC_S_FMT: OK
+                test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+                test Cropping: OK (Not Supported)
+                test Composing: OK (Not Supported)
+                test Scaling: OK (Not Supported)
+
+        Codec ioctls:
+                test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+                test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+                test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+
+        Buffer ioctls:
+                test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+                test VIDIOC_EXPBUF: OK
+
+Test input 0:
+
+Stream using all formats:
+        test MMAP for Format BA81, Frame Size 640x480@60.00 Hz:
+                Stride 640, Field None: OK
+        test MMAP for Format YUYV, Frame Size 640x480@60.00 Hz:
+                Stride 1280, Field None: OK
+
+Total: 45, Succeeded: 45, Failed: 0, Warnings: 0
+END
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+[media] atmel-isc: add the Image Sensor Controller code
+
+Add driver for the Image Sensor Controller. It manages
+incoming data from a parallel based CMOS/CCD sensor.
+It has an internal image processor, also integrates a 
+triple channel direct memory access controller master
+interface.
+
+Signed-off-by: Songjun Wu <songjun.wu@microchip.com>
+Series-to: nicolas.ferre@atmel.com
+Series-cc: laurent.pinchart@ideasonboard.com
+Series-cc: linux-arm-kernel@lists.infradead.org
+Series-cc: linux-media@vger.kernel.org 
+Series-version: 8
+Series-changes: 8
+- Power on the sensor on the first open in function
+  'isc_open'.
+- Power off the sensor on the last release in function
+  'isc_release'.
+- Remove the switch of the pipeline.
+
+Series-changes: 7
+- Add enum_framesizes and enum_frameintervals.
+- Call s_stream(0) when stream start fail.
+- Fill the device_caps field of struct video_device
+  with V4L2_CAP_STREAMING and V4L2_CAP_VIDEO_CAPTURE.
+- Initialize the dev of struct vb2_queue.
+- Set field to FIELD_NONE if the pix field is not supported.
+- Return the result directly when call g/s_parm of subdev.
+
+Series-changes: 5
+- Modify the macro definition and the related code.
+
+Series-changes: 4
+- Modify the isc clock code since the dt is changed.
+
+Series-changes: 3
+- Add pm runtime feature.
+- Modify the isc clock code since the dt is changed.
+
+Series-changes: 2
+- Add "depends on COMMON_CLK" and "VIDEO_V4L2_SUBDEV_API"
+  in Kconfig file.
+- Correct typos and coding style according to Laurent's remarks
+- Delete the loop while in 'isc_clk_enable' function.
+- Replace 'hsync_active', 'vsync_active' and 'pclk_sample'
+  with 'pfe_cfg0' in struct isc_subdev_entity.
+- Add the code to support VIDIOC_CREATE_BUFS in 
+  'isc_queue_setup' function.
+- Invoke isc_config to configure register in 
+  'isc_start_streaming' function.
+- Add the struct completion 'comp' to synchronize with 
+  the frame end interrupt in 'isc_stop_streaming' function.
+- Check the return value of the clk_prepare_enable 
+  in 'isc_open' function.
+- Set the default format in 'isc_open' function.
+- Add an exit condition in the loop while in 'isc_config'.
+- Delete the hardware setup operation in 'isc_set_format'.
+- Refuse format modification during streaming 
+  in 'isc_s_fmt_vid_cap' function.
+- Invoke v4l2_subdev_alloc_pad_config to allocate and 
+  initialize the pad config in 'isc_async_complete' function.
+- Remove the '.owner  = THIS_MODULE,' in atmel_isc_driver.
+- Replace the module_platform_driver_probe() with 
+  module_platform_driver(). 
+
+Cover-letter:
+[media] atmel-isc: add driver for Atmel ISC
+The Image Sensor Controller driver includes two parts.
+1) Driver code to implement the ISC function.
+2) Device tree binding documentation, it describes how 
+   to add the ISC in device tree.
+
+Test result with v4l-utils.
+# v4l2-compliance -f
+v4l2-compliance SHA   : not available
+
+Driver Info:
+        Driver name   : atmel_isc
+        Card type     : Atmel Image Sensor Controller
+        Bus info      : platform:atmel_isc f0008000.isc
+        Driver version: 4.7.0
+        Capabilities  : 0x84200001
+                Video Capture
+                Streaming
+                Extended Pix Format
+                Device Capabilities
+        Device Caps   : 0x04200001
+                Video Capture
+                Streaming
+                Extended Pix Format
+
+Compliance test for device /dev/video0 (not using libv4l2):
+
+Required ioctls:
+        test VIDIOC_QUERYCAP: OK
+
+Allow for multiple opens:
+        test second video open: OK
+        test VIDIOC_QUERYCAP: OK
+        test VIDIOC_G/S_PRIORITY: OK
+        test for unlimited opens: OK
+
+Debug ioctls:
+        test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+        test VIDIOC_LOG_STATUS: OK (Not Supported)
+
+Input ioctls:
+        test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+        test VIDIOC_ENUMAUDIO: OK (Not Supported)
+        test VIDIOC_G/S/ENUMINPUT: OK
+        test VIDIOC_G/S_AUDIO: OK (Not Supported)
+        Inputs: 1 Audio Inputs: 0 Tuners: 0
+
+Output ioctls:
+        test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+        test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+        test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+        Outputs: 0 Audio Outputs: 0 Modulators: 0
+
+Input/Output configuration ioctls:
+        test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+        test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+        test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+        test VIDIOC_G/S_EDID: OK (Not Supported)
+
+Test input 0:
+
+        Control ioctls:
+                test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK (Not Supported)
+                test VIDIOC_QUERYCTRL: OK (Not Supported)
+                test VIDIOC_G/S_CTRL: OK (Not Supported)
+                test VIDIOC_G/S/TRY_EXT_CTRLS: OK (Not Supported)
+                test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK (Not Supported)
+                test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+                Standard Controls: 0 Private Controls: 0
+
+        Format ioctls:
+                test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+                test VIDIOC_G/S_PARM: OK
+                test VIDIOC_G_FBUF: OK (Not Supported)
+                test VIDIOC_G_FMT: OK
+                test VIDIOC_TRY_FMT: OK
+                test VIDIOC_S_FMT: OK
+                test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+                test Cropping: OK (Not Supported)
+                test Composing: OK (Not Supported)
+                test Scaling: OK (Not Supported)
+
+        Codec ioctls:
+                test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+                test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+                test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+
+        Buffer ioctls:
+                test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+                test VIDIOC_EXPBUF: OK
+
+Test input 0:
+
+Stream using all formats:
+        test MMAP for Format BA81, Frame Size 640x480@60.00 Hz:
+                Stride 640, Field None: OK
+        test MMAP for Format YUYV, Frame Size 640x480@60.00 Hz:
+                Stride 1280, Field None: OK
+
+Total: 45, Succeeded: 45, Failed: 0, Warnings: 0
+END
+
+BR2_PACKAGE_LIBV4L
+
+BR2_PACKAGE_JPEG
+
+  
+[media] atmel-isc: DT binding for Image Sensor Controller driver
+
+DT binding documentation for ISC driver.
+
+Acked-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Songjun Wu <songjun.wu@microchip.com>
+Series-to: nicolas.ferre@atmel.com
+Series-to: robh@kernel.org
+Series-cc: laurent.pinchart@ideasonboard.com
+Series-cc: linux-media@vger.kernel.org 
+Series-cc: linux-arm-kernel@lists.infradead.org
+Series-changes: 6
+- Add "iscck" and "gck" to clock-names.
+
+Series-changes: 5
+- Add clock-output-names.
+
+Series-changes: 4
+- Remove the isc clock nodes.
+
+Series-changes: 3
+- Remove the 'atmel,sensor-preferred'.
+- Modify the isc clock node according to the Rob's remarks.
+
+Series-changes: 2
+- Remove the unit address of the endpoint.
+- Add the unit address to the clock node.
+- Avoid using underscores in node names.
+- Drop the "0x" in the unit address of the i2c node.
+- Modify the description of 'atmel,sensor-preferred'.
+- Add the description for the ISC internal clock.
+
+--------------------------------------------------------------------------------------------------
+
+[media] atmel-isc: add the Image Sensor Controller code
+
+Add driver for the Image Sensor Controller. It manages
+incoming data from a parallel based CMOS/CCD sensor.
+It has an internal image processor, also integrates a 
+triple channel direct memory access controller master
+interface.
+
+Signed-off-by: Songjun Wu <songjun.wu@microchip.com>
+Series-to: nicolas.ferre@atmel.com
+Series-cc: laurent.pinchart@ideasonboard.com
+Series-cc: linux-arm-kernel@lists.infradead.org
+Series-cc: linux-media@vger.kernel.org 
+Series-version: 9
+Series-changes: 9
+- Set the default format in fuction 'isc_async_complete'.
+- Register the video device after everything is configured.
+
+Series-changes: 8
+- Power on the sensor on the first open in function
+  'isc_open'.
+- Power off the sensor on the last release in function
+  'isc_release'.
+- Remove the switch of the pipeline.
+
+Series-changes: 7
+- Add enum_framesizes and enum_frameintervals.
+- Call s_stream(0) when stream start fail.
+- Fill the device_caps field of struct video_device
+  with V4L2_CAP_STREAMING and V4L2_CAP_VIDEO_CAPTURE.
+- Initialize the dev of struct vb2_queue.
+- Set field to FIELD_NONE if the pix field is not supported.
+- Return the result directly when call g/s_parm of subdev.
+
+Series-changes: 5
+- Modify the macro definition and the related code.
+
+Series-changes: 4
+- Modify the isc clock code since the dt is changed.
+
+Series-changes: 3
+- Add pm runtime feature.
+- Modify the isc clock code since the dt is changed.
+
+Series-changes: 2
+- Add "depends on COMMON_CLK" and "VIDEO_V4L2_SUBDEV_API"
+  in Kconfig file.
+- Correct typos and coding style according to Laurent's remarks
+- Delete the loop while in 'isc_clk_enable' function.
+- Replace 'hsync_active', 'vsync_active' and 'pclk_sample'
+  with 'pfe_cfg0' in struct isc_subdev_entity.
+- Add the code to support VIDIOC_CREATE_BUFS in 
+  'isc_queue_setup' function.
+- Invoke isc_config to configure register in 
+  'isc_start_streaming' function.
+- Add the struct completion 'comp' to synchronize with 
+  the frame end interrupt in 'isc_stop_streaming' function.
+- Check the return value of the clk_prepare_enable 
+  in 'isc_open' function.
+- Set the default format in 'isc_open' function.
+- Add an exit condition in the loop while in 'isc_config'.
+- Delete the hardware setup operation in 'isc_set_format'.
+- Refuse format modification during streaming 
+  in 'isc_s_fmt_vid_cap' function.
+- Invoke v4l2_subdev_alloc_pad_config to allocate and 
+  initialize the pad config in 'isc_async_complete' function.
+- Remove the '.owner  = THIS_MODULE,' in atmel_isc_driver.
+- Replace the module_platform_driver_probe() with 
+  module_platform_driver(). 
+
+Cover-letter:
+[media] atmel-isc: add driver for Atmel ISC
+The Image Sensor Controller driver includes two parts.
+1) Driver code to implement the ISC function.
+2) Device tree binding documentation, it describes how 
+   to add the ISC in device tree.
+
+Test result with v4l-utils.
+# v4l2-compliance -f
+v4l2-compliance SHA   : not available
+
+Driver Info:
+        Driver name   : atmel_isc
+        Card type     : Atmel Image Sensor Controller
+        Bus info      : platform:atmel_isc f0008000.isc
+        Driver version: 4.7.0
+        Capabilities  : 0x84200001
+                Video Capture
+                Streaming
+                Extended Pix Format
+                Device Capabilities
+        Device Caps   : 0x04200001
+                Video Capture
+                Streaming
+                Extended Pix Format
+
+Compliance test for device /dev/video0 (not using libv4l2):
+
+Required ioctls:
+        test VIDIOC_QUERYCAP: OK
+
+Allow for multiple opens:
+        test second video open: OK
+        test VIDIOC_QUERYCAP: OK
+        test VIDIOC_G/S_PRIORITY: OK
+        test for unlimited opens: OK
+
+Debug ioctls:
+        test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+        test VIDIOC_LOG_STATUS: OK (Not Supported)
+
+Input ioctls:
+        test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+        test VIDIOC_ENUMAUDIO: OK (Not Supported)
+        test VIDIOC_G/S/ENUMINPUT: OK
+        test VIDIOC_G/S_AUDIO: OK (Not Supported)
+        Inputs: 1 Audio Inputs: 0 Tuners: 0
+
+Output ioctls:
+        test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+        test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+        test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+        Outputs: 0 Audio Outputs: 0 Modulators: 0
+
+Input/Output configuration ioctls:
+        test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+        test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+        test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+        test VIDIOC_G/S_EDID: OK (Not Supported)
+
+Test input 0:
+
+        Control ioctls:
+                test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK (Not Supported)
+                test VIDIOC_QUERYCTRL: OK (Not Supported)
+                test VIDIOC_G/S_CTRL: OK (Not Supported)
+                test VIDIOC_G/S/TRY_EXT_CTRLS: OK (Not Supported)
+                test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK (Not Supported)
+                test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+                Standard Controls: 0 Private Controls: 0
+
+        Format ioctls:
+                test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+                test VIDIOC_G/S_PARM: OK
+                test VIDIOC_G_FBUF: OK (Not Supported)
+                test VIDIOC_G_FMT: OK
+                test VIDIOC_TRY_FMT: OK
+                test VIDIOC_S_FMT: OK
+                test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+                test Cropping: OK (Not Supported)
+                test Composing: OK (Not Supported)
+                test Scaling: OK (Not Supported)
+
+        Codec ioctls:
+                test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+                test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+                test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+
+        Buffer ioctls:
+                test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+                test VIDIOC_EXPBUF: OK
+
+Test input 0:
+
+Stream using all formats:
+        test MMAP for Format BA81, Frame Size 640x480@60.00 Hz:
+                Stride 640, Field None: OK
+        test MMAP for Format YUYV, Frame Size 640x480@60.00 Hz:
+                Stride 1280, Field None: OK
+
+Total: 45, Succeeded: 45, Failed: 0, Warnings: 0
+END
+--------------------------------------------------------
+
+[media] atmel-isc: add the Image Sensor Controller code
+
+Add driver for the Image Sensor Controller. It manages
+incoming data from a parallel based CMOS/CCD sensor.
+It has an internal image processor, also integrates a 
+triple channel direct memory access controller master
+interface.
+
+Signed-off-by: Songjun Wu <songjun.wu@microchip.com>
+Series-to: nicolas.ferre@atmel.com
+Series-cc: laurent.pinchart@ideasonboard.com
+Series-cc: linux-arm-kernel@lists.infradead.org
+Series-cc: linux-media@vger.kernel.org 
+Series-version: 10
+Series-changes: 10
+- If 's_power' api does not exist in the sensor driver,
+  the function 'isc_open' will return a value of 0.
+
+Series-changes: 9
+- Set the default format in fuction 'isc_async_complete'.
+- Register the video device after everything is configured.
+
+Series-changes: 8
+- Power on the sensor on the first open in function
+  'isc_open'.
+- Power off the sensor on the last release in function
+  'isc_release'.
+- Remove the switch of the pipeline.
+
+Series-changes: 7
+- Add enum_framesizes and enum_frameintervals.
+- Call s_stream(0) when stream start fail.
+- Fill the device_caps field of struct video_device
+  with V4L2_CAP_STREAMING and V4L2_CAP_VIDEO_CAPTURE.
+- Initialize the dev of struct vb2_queue.
+- Set field to FIELD_NONE if the pix field is not supported.
+- Return the result directly when call g/s_parm of subdev.
+
+Series-changes: 5
+- Modify the macro definition and the related code.
+
+Series-changes: 4
+- Modify the isc clock code since the dt is changed.
+
+Series-changes: 3
+- Add pm runtime feature.
+- Modify the isc clock code since the dt is changed.
+
+Series-changes: 2
+- Add "depends on COMMON_CLK" and "VIDEO_V4L2_SUBDEV_API"
+  in Kconfig file.
+- Correct typos and coding style according to Laurent's remarks
+- Delete the loop while in 'isc_clk_enable' function.
+- Replace 'hsync_active', 'vsync_active' and 'pclk_sample'
+  with 'pfe_cfg0' in struct isc_subdev_entity.
+- Add the code to support VIDIOC_CREATE_BUFS in 
+  'isc_queue_setup' function.
+- Invoke isc_config to configure register in 
+  'isc_start_streaming' function.
+- Add the struct completion 'comp' to synchronize with 
+  the frame end interrupt in 'isc_stop_streaming' function.
+- Check the return value of the clk_prepare_enable 
+  in 'isc_open' function.
+- Set the default format in 'isc_open' function.
+- Add an exit condition in the loop while in 'isc_config'.
+- Delete the hardware setup operation in 'isc_set_format'.
+- Refuse format modification during streaming 
+  in 'isc_s_fmt_vid_cap' function.
+- Invoke v4l2_subdev_alloc_pad_config to allocate and 
+  initialize the pad config in 'isc_async_complete' function.
+- Remove the '.owner  = THIS_MODULE,' in atmel_isc_driver.
+- Replace the module_platform_driver_probe() with 
+  module_platform_driver(). 
+
+Cover-letter:
+[media] atmel-isc: add driver for Atmel ISC
+The Image Sensor Controller driver includes three parts.
+1) Driver code to implement the ISC function.
+2) Device tree binding documentation, it describes how 
+   to add the ISC in device tree.
+3) Add an entry to MAINTAINERS for Atmel ISC
+
+Test result with v4l-utils.
+# v4l2-compliance -f
+v4l2-compliance SHA   : not available
+
+Driver Infoatmel_isc f0008000.isc: Format 0xffffffff not found
+atmel_isc f0008000.isc: Format 0xffffffff not found
+
+        Driver name   : atmel_isc
+        Card type     : Atmel Image Sensor Controller
+        Bus info      : platform:atmel_isc f0008000.isc
+        Driver version: 4.7.0
+        Capabilities  : 0x84200001
+                Video Capture
+                Streaming
+                Extended Pix Format
+                Device Capabilities
+        Device Caps   : 0x04200001
+                Video Capture
+                Streaming
+                Extended Pix Format
+
+Compliance test for device /dev/video0 (not using libv4l2):
+
+Required ioctls:
+        test VIDIOC_QUERYCAP: OK
+
+Allow for multiple opens:
+        test second video open: OK
+        test VIDIOC_QUERYCAP: OK
+        test VIDIOC_G/S_PRIORITY: OK
+        test for unlimited opens: OK
+
+Debug ioctls:
+        test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+        test VIDIOC_LOG_STATUS: OK (Not Supported)
+
+Input ioctls:
+        test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+        test VIDIOC_ENUMAUDIO: OK (Not Supported)
+        test VIDIOC_G/S/ENUMINPUT: OK
+        test VIDIOC_G/S_AUDIO: OK (Not Supported)
+        Inputs: 1 Audio Inputs: 0 Tuners: 0
+
+Output ioctls:
+        test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+        test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+        test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+        Outputs: 0 Audio Outputs: 0 Modulators: 0
+
+Input/Output configuration ioctls:
+        test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+        test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+        test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+        test VIDIOC_G/S_EDID: OK (Not Supported)
+
+Test input 0:
+
+        Control ioctls:
+                test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK (Not Supported)
+                test VIDIOC_QUERYCTRL: OK (Not Supported)
+                test VIDIOC_G/S_CTRL: OK (Not Supported)
+                test VIDIOC_G/S/TRY_EXT_CTRLS: OK (Not Supported)
+                test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK (Not Supported)
+                test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+                Standard Controls: 0 Private Controls: 0
+
+        Format ioctls:
+                test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+                test VIDIOC_G/S_PARM: OK
+                test VIDIOC_G_FBUF: OK (Not Supported)
+                test VIDIOC_G_FMT: OK
+                test VIDIOC_TRY_FMT: OK
+                test VIDIOC_S_FMT: OK
+                test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+                test Cropping: OK (Not Supported)
+                test Composing: OK (Not Supported)
+                test Scaling: OK (Not Supported)
+
+        Codec ioctls:
+                test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+                test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+                test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+
+        Buffer ioctls:
+                test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+                test VIDIOC_EXPBUF: OK
+
+Test input 0:
+
+Stream using all formats:
+        test MMAP for Format BA81, Frame Size 640x480@60.00 Hz:
+                Stride 640, Field None: OK
+        test MMAP for Format YUYV, Frame Size 640x480@60.00 Hz:
+                Stride 1280, Field None: OK
+
+Total: 45, Succeeded: 45, Failed: 0, Warnings: 0
+END
+
+MAINTAINERS: atmel-isc: add entry for Atmel ISC
+
+Add the MAINTAINERS' entry for Microchip / Atmel Image Sensor Controller.
+
+Signed-off-by: Songjun Wu <songjun.wu@microchip.com>
+Series-to: nicolas.ferre@atmel.com
+Series-cc: linux-arm-kernel@lists.infradead.org
+Series-cc: linux-media@vger.kernel.org 
+
+
+[media] atmel-isc: start dma in some scenario
+    
+If a new vb buf is added to vb queue, the queue is
+empty and steaming, dma should be started.
+    
+Signed-off-by: Songjun Wu <songjun.wu@microchip.com>
+Series-to: nicolas.ferre@atmel.com
+Series-cc: linux-arm-kernel@lists.infradead.org
+
+
+- Fix the gama and contrast controls.
+- Fix some code style issue.
+
+
+
+[media] atmel-isc: Fix the static checker warning
+    
+Initialize the pointer 'fmt' before the start of the loop.    
+
+Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+Signed-off-by: Songjun Wu <songjun.wu@microchip.com>
+Series-to: Hans Verkuil <hverkuil@xs4all.nl>
+Series-to: nicolas.ferre@microchip.com
+Series-cc: linux-arm-kernel@lists.infradead.org
+
+
+[media] atmel-isc: Set the default DMA memory burst size
+
+Sometimes 'DMA single access' is not enough to transfer
+a frame of image, set '8-beat burst access' as the default
+DMA memory burst size.
+
+Signed-off-by: Songjun Wu <songjun.wu@microchip.com>
+Series-to: nicolas.ferre@microchip.com
+Series-cc: linux-arm-kernel@lists.infradead.org
+
+
+[linux-4.9-at91] ov7740: add FLIP controls
+
+
+[linux-4.9-at91] ov7740: add and init a media_pad
+
+Add and initialize a media_pad
+
+
+fswebcam -S 20 -d /dev/video0 -p BAYER -r 640x480 bayer.jpg 
+
+fswebcam -S 20 -d /dev/video0 -p BAYER -r 800x600 bayer.jpg 
+
+fswebcam -S 20 -d /dev/video0 -p BAYER -r 640x480 bayer.jpg 
+
+fswebcam -S 20 -d /dev/video0  -p YUYV -r 640x480 yuyv.jpg
+
+fswebcam -S 20 -d /dev/video0 -p YUV420P 640x480 yuv420p.jpg
+
+fswebcam -S 20 -d /dev/video0 -p RGB565 -r 640x480 rgb565.jpg
+
+fswebcam -S 20 -d /dev/video0 -p RGB555 -r 640x480 rgb555.jpg
+
+http://intra-shanghai.atmel.com/twiki/bin/view/Shanghai/UsingIsc
+
+arecord -D plughw:1,0 -d 10 -f S16_LE -c1 -r48000 p48000.wav
+
+

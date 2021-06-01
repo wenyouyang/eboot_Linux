@@ -1,0 +1,209 @@
+
+amixer cset numid=10 1
+
+arecord -d 5 -f S16_LE -c2 -r8000 8000.wav
+
+alsactl -f /etc/asound.state restore
+
+setenv bootargs 'mem=64M console=ttyS0,115200 mtdparts=atmel_nand:4M(bootstrap/uboot/kernel)ro,60M(rootfs),-(data) root=/dev/mtdblock1 rw   rootfstype=jffs2'
+
+mkimage -A arm -O linux -C none -T kernel -a 20008000 -e 20008000 -n linux-2.6 -d arch/arm/boot/zImage /tftproot/9g10.img
+====
+setenv bootcmd tftp 0x22000000 xu/9g20.img\; tftp 0x21100000 genericfs.arm_nofpu.cramfs\; bootm 0x22000000
+
+setenv bootargs 'mem=64M console=ttyS0,115200 mtdparts=atmel_nand:4M(bootstrap/uboot/kernel)ro,60M(rootfs),-(data) root=/dev/mtdblock1 rw rootfstype=jffs2'
+===
+setenv bootcmd tftp 0x22000000 9261.img\; tftp 0x21100000 genericfs.arm_nofpu.cramfs\; bootm 0x22000000
+setenv bootcmd tftp 0x22000000 9260.img\; tftp 0x21100000 genericfs.arm_nofpu.cramfs\; bootm 0x22000000
+setenv bootcmd tftp 0x22000000 9263.img\; tftp 0x21100000 genericfs.arm_nofpu.cramfs\; bootm 0x22000000
+setenv bootcmd tftp 0x22000000 9g10.img\; tftp 0x21100000 genericfs.arm_nofpu.cramfs\; bootm 0x22000000
+setenv bootcmd tftp 0x22000000 9260.img\; tftp 0x21100000 genericfs.arm_nofpu.cramfs\; bootm 0x22000000
+setenv ipaddr 10.217.2.201
+setenv serverip 10.217.2.42
+setenv bootargs mem=64M console=ttyS0,115200 initrd=0x21100000,17000000 ramdisk_size=15360 root=/dev/ram0 rw
+setenv ethaddr 00:14:87:AA:6C:EC
+
+setenv ethaddr 00:10:a1:86:95:11
+
+tftp -g -l usbserial.ko -r usbserial.ko 10.217.2.41
+===
+
+setenv bootargs mem=64M console=ttyS0,115200 initrd=0x21100000,17000000 root=/dev/ram0 rw
+setenv bootargs mem=64M console=ttyS0,115200 initrd=0x21100000,0xC00000 ramdisk_size=14336 root=/dev/ram0 rw
+
+setenv bootargs 'mem=128M console=ttyS0,115200 mtdparts=atmel_nand:4M(bootstrap/uboot/kernel)ro,128M(rootfs),-(data) root=/dev/mtdblock1 rw rootfstype=jffs2'
+setenv bootargs 'mem=64M console=ttyS0,115200 mtdparts=atmel_nand:4M(bootstrap/uboot/kernel)ro,128M(rootfs),-(data) root=/dev/mtdblock1 rw rootfstype=jffs2'
+setenv bootcmd 'tftp 0x72000000 xxx.img; bootm 0x72000000'
+
+NAND rootfs offset: 0x400000
+============================
+setenv bootcmd 'tftp 0x22000000 xu/9263.img; bootm 0x22000000'
+setenv bootcmd 'nand read 0x22200000 0x200000 0x250000; bootm 0x22200000'
+setenv bootargs 'mem=64M console=ttyS0,115200 root=/dev/mtdblock1 rw rootfstype=jffs2'
+
+setenv bootargs 'mem=64M console=ttyS0,115200 root=/dev/mtdblock1 rw rootfstype=ext2'
+
+setenv bootargs 'mem=64M console=ttyS0,115200 root=/dev/nfs nfsroot=10.217.2.42:/nfsroot/rootfs-9260ek-test_macb ip=10.217.2.202 init=/linuxrc'
+
+===============
+mount -o nolock
+=============== 
+mount -t nfs 10.217.2.52:/nfsroot/eric  /mnt
+
+U-Boot> printenv
+bootdelay=3
+baudrate=115200
+
+setenv bootcmd 'cp.b 0xC0040000 0x22200000 0x002F0000; bootm 0x22200000'
+
+ethaddr=90:b7:23:a6:12:f3
+ipaddr=172.18.247.114
+serverip=172.18.247.198
+bootargs=mem=64M console=ttyS0,115200 root=/dev/mtdblock0 rw rootfstype=jffs2
+stdin=serial
+stdout=serial
+stderr=serial
+
+setenv bootcmd tftp 0x21400000 xu/9g20.img\; tftp 0x21100000 xu/generic.cramfs\; bootm 0x21400000
+setenv bootcmd tftp 0x21400000 xu/9260.img\; tftp 0x21100000 stress.ramfs\; bootm 0x21400000
+
+setenv bootcmd tftp 0x21400000 xu/linux-hsiao.img\; tftp 0x21100000 stress.ramfs\; bootm 0x21400000
+
+tftp 0x21400000 xu/u-boot-9g20-nandflash.bin
+
+====
+nand read 0x22100000 0x400000 0x800
+atmel readoobraw 0x22000400 0x400000
+mw.b 0x22100000 cd
+nand erase 0x400000 0x20000
+atmel writeraw 0x22100000 0x400000 0x800
+atmel writeoobraw 0x22000400 0x400000
+====
+
+
+
+nand erase 0x100000 0x20000; nand write 0x21000000 0x100000 0x800; nand read 0x21000000 0x100000 0x800
+
+*** nand_base.c, scan_tail: too critical if statement
+
+Hardware: hw_ctrl: 1, read_buf_256: 426, ecc_cal: 9, raed_oob: 152, correct: 95
+
+Soft:     read_buffer: 3543, cal: 2921, correct: 93
+Soft: read_buffer: 3269, cal: 2920, correct: 93
+
+nand erase 0x400000 0x20000; nand write 0x21000000 0x400000 0x800
+nand read 0x22000000 0x400000 0x800
+dd if=/dev/mtdblock1 of=dat bs=2048 count=1
+atmel writeraw 0x21000000 0x4000000 0x800
+
+
+setenv bootcmd tftp 0x22000000 xu/9260.img\; tftp 0x21100000 xu/generic.cramfs\; bootm 0x22000000
+setenv bootargs 'mem=64M console=ttyS0,115200 root=/dev/mtdblock1 rw rootfstype=jffs2'
+
+For EABI compiler, add EABI support in kernel config.
+
+mount -t vfat /dev/sda /mnt; cd /mnt; amixer set 'Master' 70 unmute; amixer set 'PCM' 70 unmute; mplayer -ac mad le_papillon.mp3
+
+###########################################################
+# AT91SAM Linux ?Download sources
+###########################################################
+#wget http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.22.tar.bz2
+#wget http://maxim.org.za/AT91RM9200/2.6/2.6.22-at91.patch.gz
+#wget ftp://www.linux4sam.org/pub/linux/2.6.22-at91-exp.patch.gz
+#wget http://www.linux4sam.org/twiki/pub/Linux4SAM/LinuxKernel/at91sam9263ek_defconfig
+
+###########################################################
+# AT91SAM Linux ?Uncompress & Patch 
+###########################################################
+cd /opt/AT91SAM/linux_src/
+#tar jxvf /opt/AT91SAM/linux_src/linux-2.6.22.tar.bz2
+zcat ../2.6.22-at91.patch.gz | patch -p1 
+zcat ../2.6.22-at91-exp.patch.gz | patch -p1 
+zcat ../2.6.22-at91-training.patch.gz | patch -p1 
+
+###########################################################
+# AT91SAM Linux ?Configure kernel 
+###########################################################
+cd /opt/AT91SAM/linux_src/linux-2.6.22 
+make ARCH=arm at91sam9263ek_defconfig
+
+make ARCH=arm distclean
+cp ../at91sam9263ek_defconfig .config
+make ARCH=arm oldconfig
+
+###########################################################
+# AT91SAM Linux ?Build kernel
+###########################################################
+cd /opt/AT91SAM/linux_src/linux-2.6.22 
+make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabi-
+
+cd /opt/AT91SAM/linux_src/linux-2.6.22 
+mkimage -A arm -O linux -C none -T kernel -a 20008000 -e 20008000 \
+                  -n linux-2.6 -d arch/arm/boot/zImage linux-2.6.22-uImage 
+
+###########################################################
+# AT91SAM Linux ?SAM-BA Connection   
+###########################################################
+lsusb -d 03eb:6124 
+
+dmesg 
+
+###########################################################
+# AT91SAM Linux ?Configure U-Boot Network
+###########################################################
+U-Boot> setenv  ethaddr 12:34:45:78:99:AA
+U-Boot> setenv  ipaddr  10.159.245.170
+U-Boot> saveenv 
+
+U-Boot> setenv  serverip  10.159.245.169
+U-Boot> saveenv 
+
+U-Boot> printenv
+
+###########################################################
+# AT91SAM Linux ?U-Boot Load & Start kernel
+###########################################################
+cp /opt/AT91SAM/linux_src/linux-2.6.22/linux-2.6.22-uImage  /tftpboot
+chmod a+r /tftpboot/linux-2.6.22-uImage 
+
+U-Boot> tftp 0x22200000 linux-2.6.22-uImage
+U-Boot> setenv bootargs 'mem=64M console=ttyS0,115200 root=/dev/mtdblock0 rw rootfstype=jffs2'
+U-Boot> bootm 0x22200000
+
+U-Boot> setenv  go 'tftp 0x22200000 linux-2.6.22-uImage;  bootm 0x22200000'
+U-Boot> saveenv
+U-Boot> run go
+
+###########################################################
+# AT91SAM Linux ?U-Boot Flash & Start kernel
+###########################################################
+U-Boot> tftp 0x22200000 linux-2.6.22-uImage
+U-Boot> cp.b 0x22200000 0xc0040000 0x00180000
+U-Boot> setenv  bootcmd 'cp.b 0xc0040000  0x22200000  0x00180000;  bootm 0x22200000'
+U-Boot> setenv  bootdelay  3
+U-Boot> saveenv 
+
+tftp -g -l testlcd.sh -r testlcd.sh 10.217.2.42
+
+############## TMP: For VDec of 9M10 ##############
+tftp -g -l casino.m4v -r casino.m4v 10.217.2.41; modprobe hx170dec;modprobe memalloc;MAJOR=`cat /proc/devices |grep hx170|cut -f1 -d" "`;mknod /dev/hx170 c $MAJOR 0;MAJOR=`cat /proc/devices |grep memalloc|cut -f1 -d" "`;mknod /dev/memalloc c $MAJOR 0;export DISPLAY=:0.0
+
+modprobe hx170dec;modprobe memalloc;MAJOR=`cat /proc/devices |grep hx170|cut -f1 -d" "`;mknod /dev/hx170 c $MAJOR 0;MAJOR=`cat /proc/devices |grep memalloc|cut -f1 -d" "`;mknod /dev/memalloc c $MAJOR 0;export DISPLAY=:0.0
+
+gst-launch-0.10 filesrc location=casino.m4v ! x170 codec=MPEG4 output=RGB32 scaling=0.80 ! ximagesink
+gst-launch-0.10 filesrc location=/home/root/casino.m4v ! x170 codec=MPEG4 output=RGB32 scaling=0.80 ! ximagesink
+gst-launch-0.10 filesrc location=/home/root/casino.m4v ! x170 codec=MPEG4 output=RGB32 ! ximagesink
+gst-launch-0.10 filesrc location=/home/root/mpeg4.dat ! x170 codec=MPEG4 output=RGB32 ! ximagesink
+gst-launch-0.10 filesrc location=/home/root/casino.m4v ! x170 codec=MPEG4 output=RGB16 ! ximagesink
+gst-launch-0.10 filesrc location=/home/root/casino.m4v ! x170 codec=MPEG4 output=RGB16 scaling=0.80 ! ximagesink
+
+gst-launch-0.10 filesrc location=/home/root/1.dat ! x170 codec=MPEG4 output=RGB32 scaling=0.80 ! ximagesink
+
+setprop net.dns1 <ipaddress>
+
+##################  Qt mouse ###########################
+export QWS_MOUSE_PROTO="TSLIB:/dev/input/event2 Intellimouse:/dev/input/mouse1"
+
+export QWS_MOUSE_PROTO="TSLIB:/dev/input/event2"
+
+export QWS_MOUSE_PROTO="Intellimouse:/dev/input/mouse1"

@@ -1,0 +1,55 @@
+gst-launch filesrc location=MPEG2_320_240.avi ! avidemux name=demux {demux.video_00 ! queue ! x170 output=RGB16 inbuf-thresh=10000 ! queue ! ximagesink } {demux.audio_00 ! queue ! mad ! audioconvert ! queue ! osssink }
+gst-launch --gst-debug=x170:5 filesrc location=MPEG2_320_240.avi ! avidemux name=demux demux.video_00 ! queue ! x170 output=RGB16 inbuf-thresh=10000 ! queue ! ximagesink ! demux.audio_00 ! queue ! mad ! audioconvert ! queue ! osssink!
+
+
+export DISPLAY=:0.0
+gst-launch-0.10 --gst-debug=x170:5 filesrc location=/media/sda/XVID_ASPL0.avi ! avidemux name=demux { demux.video_00 ! queue ! x170 output=RGB16  inbuf-thresh=50000 ! ximagesink } { demux.audio_00 ! queue ! mad ! osssink }
+gst-launch-0.10 --gst-debug=x170:5 filesrc location=/media/sda/XVID_ASPL0.avi ! avidemux name=demux demux.video_00 ! queue ! x170 output=RGB16  inbuf-thresh=50000 ! ximagesink } { demux.audio_00 ! queue ! mad ! osssink }
+
+
+1. Play the MP3 file
+   --> gst-launch filesrc location=<file_name>.mp3 ! mad ! osssink
+   --> gst-launch filesrc location=love.mp3 ! mad ! osssink
+   
+   
+2. Play an AVI movie
+   --> gst-launch filesrc location=.avi ! avidemux video
+   
+gst-launch --gst-debug=x170:5 filesrc location=/media/sda/640x480_30fps_5000Kbps.mpg ! mpegdemux name=demux {demux.video_00 ! queue ! x170 output=RGB16 codec=MPEG2 inbuf-thresh=10000 ! queue ! ximagesink }
+   
+   gst-launch filesrc location=/media/sda/XVID_ASPL0.avi ! avidemux name=demux {demux.video_00 ! queue ! x170 output=RGB16 codec=MPEG2 inbuf-thresh=10000 ! queue ! ximagesink }
+   
+ gst-launch filesrc location=XVID_ASPL0.avi ! mpegdemux name=demux {demux.video_00 ! queue ! x170 output=RGB16 inbuf-thresh=10000 ! queue ! ximagesink }   
+   
+3. gst-inspec x170
+
+
+
+
+gst-launch filesrc location=/media/sda/XVID_ASPL0.avi !avidemux name=demux  demux.audio_00 ! mad ! alsasink demux.video_00 !queue ! xviddec ! ffmpegcolorspace  ! timeoverlay ! xvimagesink
+
+
+
+gst-launch filesrc location=MPEG2_320_240.avi ! avidemux name=demux demux.video_00 ! queue ! x170 output=RGB16 inbuf-thresh=10000
+
+
+5. play mp3 file
+
+
+
+
+4. Working commandline
+   --> export DISPLAY=:0.0
+ 
+   --> gst-launch filesrc location=XVID_ASPL1.avi ! avidemux name=demux {demux.video_00 ! queue ! x170 output=RGB16 inbuf-thresh=10000 ! queue ! ximagesink } {demux.audio_00 ! queue ! mad ! audioconvert ! queue ! osssink }
+ 
+   --> gst-launch filesrc location=MPEG2_320_240.avi ! avidemux name=demux {demux.video_00 ! queue ! x170 output=RGB16 inbuf-thresh=10000 ! queue ! ximagesink } {demux.audio_00 ! queue ! mad ! audioconvert ! queue ! osssink }
+ 
+   --> gst-launch filesrc location=MPEG2_720_480.avi ! avidemux name=demux {demux.video_00 ! queue ! x170 output=RGB16 output-width=480 output-height=272 inbuf-thresh=10000 ! queue ! ximagesink } {demux.audio_00 ! queue ! mad ! audioconvert ! queue ! osssink }
+   gst-launch filesrc location=Test_800x480_30FPS.wmv ! avidemux name=demux {demux.video_00 ! queue ! x170 output=RGB16 output-width=480 output-height=272 inbuf-thresh=10000 ! queue ! ximagesink } {demux.audio_00 ! queue ! mad ! audioconvert ! queue ! osssink }
+  
+   --> gst-launch --gst-debug=x170:5 filesrc location=640x480_30fps_5000Kbps.mpg ! mpegdemux name=demux {demux.video_00 ! queue ! x170 output=RGB16 inbuf-thresh=10000 ! queue ! ximagesink } {demux.audio_00 ! queue ! mad ! audioconvert ! queue ! osssink }
+ 
+   --> gst-launch filesrc location= Test_H264_320x240.avi ! avidemux name=demux {demux.video_00 ! queue ! x170 output=RGB16 inbuf-thresh=10000 codec=H264 ! queue ! ximagesink } {demux.audio_00 ! queue ! mad ! audioconvert ! queue ! osssink }
+   
+   --> gst-launch filesrc location= Test_320x240.wmv ! avidemux name=demux {demux.video_00 ! queue ! x170 output=RGB16 inbuf-thresh=10000 ! queue ! ximagesink } {demux.audio_00 ! queue ! mad ! audioconvert ! queue ! osssink }

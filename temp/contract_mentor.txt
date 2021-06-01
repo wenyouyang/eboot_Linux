@@ -1,0 +1,21 @@
+Woelfle, Juergen (Juergen_Woelfle@mentor.com)
+
+# Audio
+Krause, Mathias (Mathias_Krause@mentor.com)
+Held, Stefan <Stefan_Held@mentor.com>
+
+Schmid, Carsten <Carsten_Schmid@mentor.com>
+
+# Graphic
+Zinser, Markus <Markus_Zinser@mentor.com>
+Oezcan, Goekhan <Goekhan_Oezcan@mentor.com>
+
+# BSP &  Android
+Mueller, Andreas <Andreas_Mueller@mentor.com>
+Muhammed, Wasim <Wasim_Muhammed@mentor.com>
+Adeel, Muhammad <Muhammad_Adeel@mentor.com>
+Ciochina, Tudor <Tudor_Ciochina@mentor.com>
+Tunik, Raman <Raman_Tunik@mentor.com>
+
+Noe-Sdun, Frederik <Frederik_NoeSdun@mentor.com>
+

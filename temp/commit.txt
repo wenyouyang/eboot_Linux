@@ -1,0 +1,14 @@
+commit 8a3fda223988e0201cd4038e3eaa230f07640779 (HEAD, refs/bisect/bad)
+Author: Alexander Irion <alexander_irion@mentor.com>
+Date:   Mon Nov 2 17:28:18 2020 +0100
+
+    Add libmodule to system and update components to use it from their
+
+    The following components now use libmodule from the system and not as GIT sub-module anymore.
+
+    * Update cdcbase-rvc
+    * Update ubm2wayland
+    * Update omxplayer
+    * Update cdcbase-screen-content-manager
+
+    Component unit test "module-test" is added to the CDCBase testing image.

@@ -1,0 +1,27 @@
+software =
+{
+	version = "1.0.1";
+
+	nitrogen6x = {
+
+		hardware-compatibility: [ "REV4" ];
+
+		images: (
+			{
+				filename = "rootfs.ext2.gz";
+				device = "/dev/update";
+				type = "raw";
+				sha256 = "1e0f63c1e6026acd7bba16ced9693aa862f7df04e423b668acaf9eb3fa4330a2";
+				compressed = true;
+			}
+		);
+	
+		scripts: (
+			{
+				filename = "update.sh";
+				type = "shellscript";
+				sha256 = "faaaa3096b01c196d20903e21ec88757834e68f09de4c2edd721ad8b83a9628e";
+			 }
+		);
+	};
+}

@@ -1,0 +1,366 @@
+setenv bootcmd 'tftp 21000000 wyang/at91sam9g25ek.dtb;tftp 22000000 wyang/uImage; bootm 0x22000000 - 0x21000000'
+
+setenv ethaddr 3a:1f:34:08:54:64;setenv ipaddr 10.160.137.210;setenv serverip 10.160.136.60
+
+setenv bootargs 'console=ttyS0,115200 root=/dev/nfs rw nfsroot=10.217.11.52:/nfsroot/wyang/buildroot_rootfs nfsaddrs=10.217.2.50:10.217.11.52:10.217.2.250'
+setenv bootargs 'earlyprintk=ttyS0,115200 root=/dev/nfs rw nfsroot=10.217.11.52:/nfsroot/wyang/buildroot_rootfs1 nfsaddrs=10.217.2.50:10.217.11.52:10.217.2.250'
+setenv bootargs 'console=ttyS0,115200 root=/dev/nfs rw nfsroot=10.217.11.52:/nfsroot/wyang/buildroot_rootfs1 nfsaddrs=10.217.2.55:10.217.11.52:10.217.2.250'
+setenv bootargs 'console=ttyS0,115200 root=/dev/nfs rw nfsroot=10.217.11.52:/nfsroot/wyang/oe_rootfs nfsaddrs=10.217.2.55:10.217.11.52:10.217.2.250'
+
+setenv bootargs 'console=ttyS0,115200 root=/dev/nfs rw nfsroot=10.217.11.52:/nfsroot/wyang/buildroot_rootfs1 nfsaddrs=dhcp'
+
+setenv bootargs 'console=ttyS0,115200 root=/dev/nfs rw nfsroot=10.217.11.52:/nfsroot/wyang/rootfs/buildroot nfsaddrs=dhcp'
+
+setenv bootargs 'earlyprintk=ttyS0,115200 mtdparts=atmel_nand:256k(bootstrap)ro,512k(uboot)ro,256k(env),256k(env_redundant),256k(spare),512k(dtb),6M(kernel)ro,-(rootfs) rootfstype=ubifs ubi.mtd=7 root=ubi0:rootfs rw' 
+
+setenv bootargs 'console=ttyS0,115200 mtdparts=atmel_nand:256k(bootstrap)ro,512k(uboot)ro,256k(env),256k(env_redundant),256k(spare),512k(dtb),6M(kernel)ro,-(rootfs) rootfstype=ubifs ubi.mtd=7 root=ubi0:rootfs rw' 
+
+setenv bootdelay 1
+  
+setenv bootargs 'console=ttyS0,115200 root=/dev/nfs rw nfsroot=10.217.11.52:/nfsroot/wyang/oe_rootfs nfsaddrs=10.217.2.50:10.217.11.52:10.217.2.250'
+setenv bootargs 'earlyprintk=ttyS0,115200 root=/dev/nfs rw nfsroot=10.217.11.52:/nfsroot/wyang/oe_rootfs nfsaddrs=10.217.2.50:10.217.11.52:10.217.2.250'
+
+setenv bootcmd 'tftp 21000000 wyang/sama5d34ek.dtb;tftp 22000000 wyang/uImage; bootm 0x22000000 - 0x21000000'
+setenv bootcmd 'tftp 21000000 wyang/sama5d33ek.dtb;tftp 22000000 wyang/uImage-sama5d3; bootm 0x22000000 - 0x21000000'
+setenv bootcmd 'tftp 21000000 wyang/sama5d31ek.dtb;tftp 22000000 wyang/uImage; bootm 0x22000000 - 0x21000000'
+setenv bootcmd 'tftp 21000000 wyang/sama5d34ek.dtb;tftp 22000000 wyang/uImage-sama5d3; bootm 0x22000000 - 0x21000000'
+setenv bootcmd 'tftp 21000000 wyang/sama5d36ek.dtb;tftp 22000000 wyang/uImage-sama5d3; bootm 0x22000000 - 0x21000000'
+setenv bootcmd 'tftp 21000000 wyang/sama5d35ek.dtb;tftp 22000000 wyang/uImage-sama5d3; bootm 0x22000000 - 0x21000000'
+
+setenv bootcmd 'tftp 21000000 wyang/sama5d34ek.dtb;tftp 22000000 wyang/zImage-sama5d3; bootz 0x22000000 - 0x21000000'
+setenv bootcmd 'nand read 21000000 0x180000 0x20000;tftp 22000000 wyang/zImage-sama5d3; bootz 0x22000000 - 0x21000000'
+setenv bootcmd 'nand read 21000000 0x180000 0x20000;nand read 22000000 0x200000 0x500000; bootz 0x22000000 - 0x21000000'
+setenv bootcmd 'tftp 21000000 wyang/sama5d34ek.dtb;nand read 22000000 0x200000 0x300000; bootz 0x22000000 - 0x21000000'
+ 
+setenv bootcmd 'tftp 21000000 wyang/sama5d36ek.dtb;tftp 22000000 wyang/uImage-sama5; bootm 0x22000000 - 0x21000000'
+setenv bootcmd 'nand read 21000000 0x180000 0x20000;tftp 22000000 wyang/uImage-sama5; bootm 0x22000000 - 0x21000000'
+
+setenv bootcmd 'tftp 21000000 wyang/at91-rascal-one.dtb;tftp 22000000 wyang/uImage-rascal; bootm 0x22000000 - 0x21000000'
+
+setenv bootcmd 'tftp 21000000 wyang/sama5d4ek.dtb;tftp 22000000 wyang/uImage; bootm 0x22000000 - 0x21000000'
+
+setenv ethaddr 3a:1f:34:08:54:66; setenv ipaddr 10.160.137.210;setenv serverip 10.160.136.60
+setenv bootcmd 'tftp 21000000 wyang/sama5d4ek.dtb;tftp 22000000 wyang/uImage-sama5d4; bootm 0x22000000 - 0x21000000'
+setenv bootcmd 'tftp 21000000 wyang/sama5d4ek.dtb;tftp 22000000 wyang/zImage-sama5d4; bootz 0x22000000 - 0x21000000'
+
+setenv ethaddr 3a:1f:34:08:54:66; setenv ipaddr 10.160.137.210;setenv serverip 10.160.136.60
+
+setenv ethact macb0 gmacb0; setenv ethprime macb0;
+setenv ethact macb0 gmacb0; setenv ethprime gmacb0;
+setenv ethaddr 3a:1f:34:08:54:88; setenv eth1addr 3a:1f:34:08:54:98; setenv ipaddr 10.217.12.221; setenv ipaddr 10.160.137.210; setenv serverip 10.160.136.60
+setenv bootcmd 'tftp 21000000 wyang/sama5d36ek_cmp.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+
+setenv bootcmd 'tftp 21000000 wyang/sama5d36ek.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+
+
+setenv ethaddr 3a:1f:34:08:54:88; setenv eth1addr 3a:1f:34:08:54:98; setenv ipaddr 10.160.137.210; setenv serverip 10.160.136.60
+
+setenv bootcmd 'tftp 21000000 wyang/at91-sama5d3_xplained.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+
+setenv bootcmd 'tftp 21000000 wyang/at91sam9g35ek.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+
+
+#sama5d2_xplained
+
+setenv ipaddr 10.160.137.210; setenv serverip 10.160.136.60; 
+
+setenv bootcmd 'tftp 21000000 wyang/at91-sama5d2_xplained.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+setenv bootcmd 'tftp 21000000 wyang/at91-sama5d27_som1_ek.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+
+setenv bootcmd 'tftp 21000000 wyang/at91-sama5d2_xplained_pda4.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+
+setenv ethaddr 3a:1f:34:08:54:88; 
+
+setenv bootcmd 'tftp 21000000 wyang/at91sam9g20ek_2mmc.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000' 
+setenv bootcmd 'tftp 21000000 wyang/at91sam9g20ek.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+setenv bootcmd 'tftp 22000000 wyang/zImage; bootz 0x22000000'
+
+setenv bootcmd 'tftp 71000000 wyang/at91sam9m10g45ek.dtb;tftp 72000000 wyang/zImage; bootz 0x72000000 - 0x71000000'
+setenv bootcmd 'tftp 21000000 wyang/at91sam9g25ek.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/sam9g20 nfsaddrs=dhcp'
+
+setenv bootcmd 'fatload mmc 0:1 22000000 zImage; fatload mmc 0:1 21000000 at91-sama5d27_som1_ek.dtb; bootz 0x22000000 - 0x21000000'
+
+setenv bootcmd 'fatload mmc 0:2 22000000 zImage; fatload mmc 0:2 21000000 at91-sama5d2_xplained.dtb; bootz 0x22000000 - 0x21000000'
+
+setenv bootcmd 'ext4load mmc 0:1 22000000 boot/zImage; ext4load mmc 0:1 21000000 boot/at91-sama5d2_xplained.dtb; bootz 0x22000000 - 0x21000000'
+setenv bootargs 'console=ttyS0,115200 root=/dev/mmcblk0p1 rw rootfstype=ext4 rootwait'
+setenv bootargs 'console=ttyS0,115200 root=/dev/mmcblk0 rw rootfstype=ext4 rootwait'
+
+setenv bootcmd 'fatload mmc 0:2 22000000 zImage; fatload mmc 0:2 21000000 at91-sama5d2_xplained.dtb; fatload mmc 0:2 32000000 r.uimg; bootz 0x22000000 0x32000000 0x21000000'
+setenv bootcmd 'tftp 21000000 wyang/at91-sama5d2_xplained.dtb;tftp 22000000 wyang/zImage; tftp 32000000 wyang/r.uimg; bootz 0x22000000 0x32000000 0x21000000'
+
+bootargs=console=ttyS0,115200 earlyprintk ignore_loglevel root=/dev/ram rw
+
+
+setenv bootcmd 'tftp 21000000 wyang/at91-sama5d2_ptc.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+setenv bootcmd 'tftp 21000000 wyang/at91-sama5d2_xplained.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+setenv bootcmd 'tftp 21000000 wyang/at91-sama5d2_xplained_pda4.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+
+setenv bootcmd 'tftp 21000000 wyang/at91-sama5d4ek.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs_spidev nfsaddrs=dhcp'
+
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs3 nfsaddrs=dhcp'
+
+
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/buildroot/rootfs_201705 nfsaddrs=dhcp'
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/buildroot/rootfs_201705_d2 nfsaddrs=dhcp'
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/buildroot/rootfs_201705_d3 nfsaddrs=dhcp'
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/buildroot/rootfs_201705_d4 nfsaddrs=dhcp'
+
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs1 nfsaddrs=dhcp'
+
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/buildroot/rootfs_201705_imx7 nfsaddrs=dhcp'
+
+setenv mmcargs 'setenv bootargs console=ttymxc0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/buildroot/rootfs_201705_imx7 proto=tcp nfsaddrs=dhcp'
+setenv mmcargs 'setenv bootargs console=ttymxc0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/buildroot/rootfs_20170502_imx7 proto=tcp nfsaddrs=dhcp'
+
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs_ip nfsaddrs=dhcp'
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs_ip3 nfsaddrs=dhcp'
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs_o3 nfsaddrs=dhcp'
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs_isc2 nfsaddrs=dhcp video=Unknown-1:480x272-1'
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs_isc3 nfsaddrs=dhcp video=Unknown-1:480x272-16'
+bootargs=console=ttyS0,115200 root=/dev/mmcblk0p1 rw rootfstype=ext4 rootwait video=Unknown-1:480x272-16
+
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk cpuidle_sysfs_switch root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs3 nfsaddrs=10.217.12.250'
+
+setenv bootcmd 'tftp 21000000 wyang/at91-sama5d2_xplained.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+
+setenv bootargs 'console=ttyS0,57600 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/buildroot/rootfs nfsaddrs=dhcp'
+setenv bootargs 'console=ttyS0,57600 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs2 nfsaddrs=dhcp'
+
+setenv bootargs 'console=ttyS0,57600 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs2 nfsaddrs=10.217.12.250'
+setenv bootargs 'console=ttyS0,57600 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/sama5d4 nfsaddrs=10.217.12.250'
+
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs1 nfsaddrs=dhcp'
+
+setenv bootargs 'console=ttyS0,57600 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/sam9g20 nfsaddrs=dhcp'
+
+setenv ipaddr 10.160.137.210;setenv serverip 10.160.136.60; setenv bootcmd 'tftp 21000000 wyang/at91-sama5d2_ptc.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+
+setenv bootcmd 'tftp 21000000 wyang/at91-sama5d2_ptc.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+
+setenv bootcmd 'nand read 0x21000000 0x180000 0x80000; nand read 22000000 0x200000 0x600000; bootz 0x22000000 - 0x21000000'
+
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs2 nfsaddrs=dhcp'
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs1 nfsaddrs=10.217.12.250'
+
+setenv bootargs 'console=ttyS0,57600 root=/dev/mmcblk1p1 rw rootfstype=ext4 rootwait'
+setenv bootargs 'console=ttyS0,57600 root=/dev/mmcblk1p2 rw rootfstype=ext4 rootwait'
+
+
+setenv bootargs 'console=ttyS0,115200 root=/dev/mmcblk0p1 rw rootfstype=ext4 rootwait'
+
+setenv bootargs 'console=ttyS0,57600 root=/dev/mmcblk0p2 rw rootfstype=ext4 rootwait'
+
+setenv bootargs 'console=ttyS0,57600 printk.time=1 root=/dev/mmcblk1p2 rw rootfstype=ext4 rootwait'
+setenv bootargs 'console=ttyS0,115200 printk.time=1 root=/dev/mmcblk0p2 rw rootfstype=ext4 rootwait'
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs2 nfsaddrs=10.217.12.250'
+
+printk.time=1
+
+setenv bootargs 'console=ttyS0,57600 rw earlyprintk printk.time=1 root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs2 nfsaddrs=10.217.12.250'
+
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/buildroot/rootfs nfsaddrs=dhcp'
+
+
+setenv bootcmd 'fatload mmc 1:0 0x21000000 at91-sama5d2_xplained.dtb; fatload mmc 1:0 0x22000000 zImage; bootz 0x22000000 - 0x21000000'
+setenv bootcmd 'fatload mmc 0:1 0x21000000 at91-sama5d27_som1_ek.dtb; fatload mmc 0:1 0x22000000 zImage; bootz 0x22000000 - 0x21000000'
+
+
+setenv bootargs 'console=ttyS0,57600 earlyprintk mtdparts=atmel_nand:6M(bootstrap)ro, 6M(kernel)ro,-(rootfs) rootfstype=ubifs ubi.mtd=2 root=ubi0:rootfs'
+setenv bootargs 'console=ttyS0,115200 earlyprintk mtdparts=atmel_nand:6M(bootstrap)ro, 6M(kernel)ro,-(rootfs) rootfstype=ubifs ubi.mtd=2 root=ubi0:rootfs' 
+setenv bootcmd 'nand read 0x21000000 0xa00000 0x80000; nand read 22000000 0x600000 0x600000; bootz 0x22000000 - 0x21000000'
+
+#sama5d4ek
+setenv ethaddr 3a:1f:34:08:54:66; setenv ipaddr 10.160.137.210;setenv serverip 10.160.136.60
+setenv bootcmd 'tftp 21000000 wyang/at91-sama5d4ek.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs1 nfsaddrs=dhcp'
+
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/sam9g20 nfsaddrs=dhcp'
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/sama5d4 nfsaddrs=dhcp'
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs2 nfsaddrs=dhcp'
+
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk mtdparts=atmel_nand:256k(bootstrap)ro,512k(uboot)ro,256k(env),256k(env_redundant),256k(spare),512k(dtb),6M(kernel)ro,-(rootfs) rootfstype=ubifs ubi.mtd=7 root=ubi0:rootfs rw'
+
+#sama5d4_xplained
+setenv ethaddr 3a:1f:34:08:54:66; setenv ipaddr 10.160.137.210;setenv serverip 10.160.136.60
+setenv bootcmd 'tftp 21000000 wyang/at91-sama5d4_xplained.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs1 nfsaddrs=dhcp'
+
+setenv bootcmd 'nand read 0x21000000 0x180000 0x80000; nand read 0x22000000 0x200000 0x600000; bootz 0x22000000 - 0x21000000'
+
+#sama5d3xek
+setenv ethact macb0 gmacb0; setenv ethprime gmacb0;
+setenv ethaddr 3a:1f:34:08:54:68; setenv eth1addr 3a:1f:34:08:54:86; setenv ipaddr 10.160.137.210;setenv serverip 10.160.136.60
+setenv bootcmd 'tftp 21000000 wyang/sama5d36ek.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/buildroot/rootfs nfsaddrs=dhcp'
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs1 nfsaddrs=dhcp'
+ 
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs nfsaddrs=dhcp'
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/sam9m10 nfsaddrs=dhcp'
+
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/sam9g20 nfsaddrs=dhcp'
+
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs2 nfsaddrs=dhcp'
+
+
+setenv bootcmd 'tftp 21000000 wyang/at91-sama5d4ek.dtb;tftp 22000000 wyang/zImage-sama5d4; bootz 0x22000000 - 0x21000000'
+  
+setenv bootcmd 'tftp 21000000 wyang/at91-sama5d4ek.dtb;tftp 22000000 wyang/zImage-sama5; bootz 0x22000000 - 0x21000000'
+setenv bootcmd 'tftp 21000000 wyang/sama5d36ek.dtb;tftp 22000000 wyang/zImage-sama5; bootz 0x22000000 - 0x21000000'
+
+setenv bootargs 'console=ttyS0,115200 root=/dev/nfs rw nfsroot=10.217.11.52:/nfsroot/wyang/buildroot_rootfs nfsaddrs=10.217.2.55:10.217.11.52:10.217.2.250'
+
+setenv ethaddr 3a:1f:34:08:54:66; setenv ipaddr 10.160.137.210;setenv serverip 10.160.136.60
+setenv bootcmd 'tftp 21000000 wyang/at91sam9g20ek.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+
+setenv ethaddr 3a:1f:34:08:54:66; setenv ipaddr 10.160.137.210;setenv serverip 10.160.136.60
+setenv bootcmd 'tftp 22000000 wyang/zImage; bootz 0x22000000'
+setenv bootargs 'console=ttyS0,115200 rw earlyprintk root=/dev/nfs rw nfsroot=10.160.136.60:/nfsroot/wyang/rootfs/sam9m10 nfsaddrs=dhcp'
+setenv bootcmd 'tftp 21000000 wyang/at91sam9g35ek.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+
+
+setenv ethprime macb0
+setenv eth1addr 3a:1f:34:08:54:86;
+ 
+setenv ethact macb0 gmacb0; setenv ethprime gmacb0;
+setenv ethaddr 3a:1f:34:08:54:68; setenv eth1addr 3a:1f:34:08:54:86; setenv ipaddr 10.160.137.210;setenv serverip 10.160.136.60
+
+setenv ethaddr 3a:1f:34:08:54:66; setenv ipaddr 10.160.137.210;setenv serverip 10.160.136.60
+
+setenv bootcmd 'tftp 21000000 wyang/sama5d36ek.dtb;tftp 22000000 wyang/zImage-sama5d3x; bootz 0x22000000 - 0x21000000'
+setenv bootcmd 'tftp 21000000 wyang/sama5d31ek.dtb;tftp 22000000 wyang/zImage-sama5d3x; bootz 0x22000000 - 0x21000000'
+ 
+setenv bootargs 'console=ttyS0,115200 mtdparts=atmel_nand:256k(bootstrap)ro,512k(uboot)ro,256k(env),256k(env_redundant),256k(spare),512k(dtb),6M(kernel)ro,-(rootfs) rootfstype=ubifs ubi.mtd=7 root=ubi0:rootfs rw'
+setenv bootargs 'console=ttyS0,115200 mtdparts=atmel_nand:256k(bootstrap)ro,512k(uboot)ro,256k(env),256k(env_redundant),256k(spare),512k(dtb),6M(kernel)ro,-(rootfs) rootfstype=ubifs ubi.mtd=7 root=ubi0:rootfs rw'
+setenv bootargs 'console=ttyS0,115200 video=LVDS-1:800x480-24 mtdparts=atmel_nand:256k(bootstrap)ro,512k(uboot)ro,256k(env),256k(env_redundant),256k(spare),512k(dtb),6M(kernel)ro,-(rootfs) rootfstype=ubifs ubi.mtd=7 root=ubi0:rootfs rw'
+ 
+
+ 
+setenv ethaddr 3a:1f:34:08:54:66; 
+setenv ipaddr 10.160.137.210;setenv serverip 10.160.136.60
+setenv bootcmd 'tftp 21000000 wyang/at91-sama5d4_xplained.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+
+setenv bootcmd 'tftp 21000000 wyang/at91-sama5d4ek.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+
+setenv bootcmd 'tftp 21000000 wyang/at91-sama5d3_xplained.dtb;tftp 22000000 wyang/uImage; bootm 0x22000000 - 0x21000000'
+
+setenv bootcmd 'tftp 21000000 wyang/at91-sama5d3_xplained.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+
+setenv bootcmd 'tftp 21000000 wyang/sama5d36ek_revc_cmp.dtb;tftp 22000000 wyang/uImage; bootm 0x22000000 - 0x21000000'
+
+setenv ethaddr a6:f6:a3:d5:08:4a;setenv ipaddr 10.160.137.210;setenv serverip 10.160.136.60
+
+setenv bootcmd 'tftp 22000000 wyang/uImage; bootm 0x22000000'
+
+setenv bootcmd 'tftp 72000000 wyang/uImage; bootm 0x72000000'
+
+setenv bootcmd 'tftp 71000000 wyang/at91sam9m10g45ek.dtb;tftp 72000000 wyang/uImage-9m10g45; bootm 0x72000000 - 0x71000000'
+setenv bootcmd 'tftp 71000000 wyang/at91sam9m10g45ek.dtb;tftp 72000000 wyang/zImage-sam9; bootz 0x72000000 - 0x71000000'
+
+setenv bootcmd 'tftp 21000000 wyang/at91sam9n12ek.dtb;tftp 22000000 wyang/uImage; bootm 0x22000000 - 0x21000000'
+setenv bootcmd 'tftp 21000000 wyang/at91sam9n12ek.dtb;tftp 22000000 wyang/uImage-sam9n12; bootm 0x22000000 - 0x21000000'
+
+setenv bootcmd 'tftp 21000000 wyang/at91sam9rlek.dtb;tftp 22000000 wyang/zImage-sam9; bootz 0x22000000 - 0x21000000'
+
+
+setenv bootcmd 'tftp 21000000 wyang/at91sam9g20ek.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+setenv bootcmd 'tftp 21000000 wyang/at91sam9g20ek_2mmc.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+
+setenv bootcmd 'tftp 21000000 wyang/at91sam9g25ek.dtb;tftp 22000000 wyang/uImage-sam9g25; bootm 0x22000000 - 0x21000000'
+setenv bootcmd 'tftp 21000000 wyang/at91sam9g35ek.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+
+setenv bootcmd 'tftp 21000000 wyang/at91sam9g35ek.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+
+setenv bootcmd 'tftp 21000000 wyang/at91sam9263ek.dtb;tftp 22000000 wyang/uImage; bootm 0x22000000 - 0x21000000'
+
+setenv bootargs mem=64M console=ttyS0,115200 mtdparts=atmel_nand:4M(bootstrap/uboot/kernel)ro,60M(rootfs),-(data) root=/dev/mtdblock1 rw rootfstype=jffs2'
+
+setenv bootcmd 'nand read.jffs2 0x22200000 0x00200000 0x300000; bootm 0x22200000'
+
+setenv bootcmd 'tftp 72000000 wyang/uImage; bootm 0x72000000'
+
+
+setenv bootargs 'console=ttyS0,115200 mtdparts=atmel_nand:8M(kernel)ro,-(rootfs) root=/dev/mtdblock1 rw rootfstype=ubifs ubi.mtd=1 root=ubi0:rootfs'
+
+
+setenv bootargs 'console=ttyS0,115200 initrd=0x23000000,27M ramdisk_size=27648 root=/dev/ram0 rw' 
+setenv bootcmd 'nand read 0x23000000 0x800000 0x1a61000; tftp 21000000 wyang/sama5d34ek.dtb; tftp 22000000 wyang/uImage-sama5d34; bootm 0x22000000 - 0x21000000'
+
+setenv bootcmd 'nand read 0x23000000 0x800000 0x1a61000; tftp 21000000 wyang/sama5d36ek.dtb; tftp 22000000 wyang/uImage-sama5d34; bootm 0x22000000 - 0x21000000'
+
+setenv bootcmd 'nand read 0x23000000 0x800000 0x1a61000; nand read 21000000 0x180000 0x20000; nand read 22000000 0x200000 0x300000; bootm 0x22000000 - 0x21000000'
+
+
+setenv bootargs 'console=ttyS0,115200 initrd=0x21100000,17000000 ramdisk_size=15360 root=/dev/ram0 rw
+
+setenv bootargs 'earlyprintk=ttyS0,115200 mtdparts=atmel_nand:256k(bootstrap)ro,512k(uboot)ro,256k(env),256k(env_redundant),256k(spare),512k(dtb),6M(kernel)ro,-(rootfs) rootfstype=ubifs ubi.mtd=7 root=ubi0:rootfs rw'
+setenv bootargs 'earlyprintk=ttyS0,115200 mtdparts=atmel_nand:256k(bootstrap)ro,512k(uboot)ro,256k(env),256k(env_redundant),256k(spare),512k(dtb),6M(kernel)ro,-(rootfs) rootfstype=ubifs ubi.mtd=7 root=ubi0:rootfs rw'
+setenv bootargs 'console=ttyS0,115200 mtdparts=atmel_nand:256k(bootstrap)ro,512k(uboot)ro,256k(env),256k(env_redundant),256k(spare),512k(dtb),6M(kernel)ro,-(rootfs) rootfstype=ubifs ubi.mtd=7 root=ubi0:rootfs rw'
+
+
+
+bootcmd=nand read 0x22000000 0x00200000 0x250000; nand read 0x21100000 0x800000 0xa62000; bootm 0x22000000
+
+
+export BR2_JLEVEL=16
+
+
+
+setenv bootcmd 'nand read 0x22000000 0x00200000 0x00400000; bootm 0x22000000#conf@sama5d36ek_pm'
+setenv bootcmd 'nand read 0x22000000 0x00200000 0x00400000; bootm 0x22000000#conf@sama5d36ek_pda7_lcd'; boot
+setenv bootcmd 'nand read 0x22000000 0x00200000 0x00400000; bootm 0x22000000#conf@sama5d36ek_pda4_lcd'
+
+setenv bootcmd 'nand read 0x22000000 0x00200000 0x00400000; bootm 0x22000000#conf@sama5d36ek_isi'
+setenv bootcmd 'nand read 0x22000000 0x00200000 0x00400000; bootm 0x22000000#conf@sama5d36ek_pda7_isi'; boot
+setenv bootcmd 'nand read 0x22000000 0x00200000 0x00400000; bootm 0x22000000#conf@sama5d36ek_pda4_isi'
+setenv bootcmd 'nand read 0x22000000 0x00200000 0x00400000; bootm 0x22000000#conf@sama5d36ek_revc_pda7_isi'
+setenv bootcmd 'nand read 0x22000000 0x00200000 0x00400000; bootm 0x22000000#conf@sama5d36ek_revc_pda4_isi'
+
+setenv bootcmd 'tftp 22000000 wyang/sama5d36ek_cmp.itb; bootm 0x22000000#conf@sama5d36ek_pda7'
+setenv bootcmd 'tftp 22000000 wyang/sama5d36ek_cmp.itb; bootm 0x22000000#conf@sama5d36ek_pda4'
+
+setenv bootcmd 'nand read 0x22000000 0x00200000 0x00400000; bootm 0x22000000#conf@sama5d36ek_pda7'
+
+setenv bootcmd 'cp.b 0xC0042000 0x22200000 0x0017AC1C; bootm 0x22200000'
+
+
+
+
+
+/*
+ * Linux command
+ */
+
+tr '\000' '\377' < /dev/zero | dd of=allones bs=1024 count=2
+
+dd if=/dev/urandom of=random-file bs=1 count=1024
+
+printf "\x68\x65\x6c\x6c\x6f\x20\x77\x6f" | cat - oldfile > newfile
+
+
+% echo -n "12345689" > new_file
+% cat original >> new_file
+% mv new_file original
+
+
+% dd if=inputstream of=new_file bs=1 count=8
+
+
+setenv bootargs 'console=ttyS0,115200 root=/dev/mmcblk0p1 rw rootfstype=ext4 rootwait'
+
+bootargs=console=ttyS0,115200 root=/dev/mmcblk0p1 rw rootfstype=ext4 rootwait
+
+bootargs=console=ttyS0,115200 earlyprintk mtdparts=atmel_nand:256k(bootstrap)ro,512k(uboot)ro,256K(env),256k(env_redundent),256k(spare),512k(dtb),6M(kernel)ro,-(rootfs) rootfstype=ubifs ubi.mtd=7 root=ubi0:rootfs
+
+
+# mount -t nfs -o nolock 10.160.136.60:/home/wyang/work/tmp /mnt
+
+
+setenv bootargs 'console=ttyS0,115200 root=/dev/mmcblk0p1 rw rootfstype=ext4 rootwait'
+
+
+setenv bootcmd 'ext4load mmc 1 22000000 boot/zImage; ext4load mmc 1 21000000 boot/at91-sama5d2_xplained.dtb; bootz 0x22000000 - 0x21000000'

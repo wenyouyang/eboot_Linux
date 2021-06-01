@@ -1,0 +1,7 @@
+systemctl list-units --type=service --state=running
+
+ls -l /lib/systemd/system/runlevel?.target
+
+systemctl isolate rescue.target
+
+systemctl isolate graphical.target

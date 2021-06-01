@@ -1,0 +1,152 @@
+
+137.202.172.87
+
+134.86.41.7
+
+miniterm.py --raw --eol LF /dev/ttyUSB0 115200
+
+minicom -D /dev/ttyUSB0
+
+miniterm.py --raw --eol LF /dev/ttyAMA0 115200
+
+mkdir /tmp/wyang
+mount 137.202.172.87:/home/wyyang/nfs_share /tmp/wyang
+
+
+scp -vr android/ wyang@137.202.172.87:/home/wyang/work/cdcbase/
+
+fastboot flash bootloader /tmp/wyang/lk.bin 
+
+grep -r lk_init_level --exclude-dir=compiler/ --exclude-dir=build-sadk-evt1-hr80/
+
+alias lk_grep="grep -r --exclude-dir=compiler/ --exclude-dir=build-sadk-evt1-hr80/"
+
+ssh wyyang@137.202.172.87
+
+ssh root@134.86.41.7
+
+
+dd if=rootfs.ext4 of=/dev/sda49 bs=512K count=32
+
+mkdir mount_point
+mount /dev/sda49 mount_point
+
+dd if=rootfs.img of=/dev/sda49 bs=512K count=32
+mount /dev/sda49 mount_point
+mkfs.ext4 /dev/sda49
+mount /dev/sda49 mount_point
+umount mount_point
+dd if=rootfs.ext4 of=/dev/sda49 bs=512K count=32yes
+mkdir in_file
+mkdir out_file
+dd if=/dev/sda49 of=out_rootfs.ext4 bs=512K count=32
+losetup -a
+losetup -fP rootfs.ext4 
+losetup -fP out_rootfs.ext4 
+losetup -a
+md5sum rootfs.ext4 
+md5sum out_rootfs.ext4 
+mount -o loop /dev/loop0 in_file/
+mount -o loop /dev/loop1  out_file/
+   
+  
+   [  306.175079] exynos-ufs 17e00000.ufs: ufshcd_ioctl: User buffer is NULL!
+   [  306.177124] EXT4-fs (sda49): bad block size 1024
+
+root@samsung-adk:~# dd if=rootfs.ext4 of=/dev/sda49 bs=512K count=32
+32+0 records in
+32+0 records out
+16777216 bytes (17 MB, 16 MiB) copied, 0.120513 s, 139 MB/s
+root@samsung-adk:~# ls
+abox-test  adb.sh  host.sh  rootfs.ext4  rootfs.img  rpmb-test
+root@samsung-adk:~# mkdir mount_point
+root@samsung-adk:~# mount /dev/sda49 mount_point/
+root@samsung-adk:~# ls mount_point/
+hello.txt  lost+found  wyang
+
+
+After bootup you can change between the consoles by pressing following sequence:
+
+Esc, O, 6, Q to change to the SYSVM
+
+and
+
+Esc, O, 6, R to change to the ANDVM (used to be 'S' in Samsung 2.4 based releases)
+
+
+
+fastboot flash kernel_sys Image
+fastboot flash dtb_sys exynosauto9-sadkauto9-evt1-sys_si.dtb
+fastboot flash ker_sys_vmand Image
+fastboot flash dtb_sys_vmand exynosauto9-sadkauto9-evt1-sys_si.dtb
+
+root@Dem-tc-pi4-host3:/tmp/wyang# scp modeset-plane-test  root@192.168.1.20:/home/root/
+
+root@samsung-adk:~# scp root@137.202.76.203:/tmp/wyang/modeset-plane-test .
+root@samsung-adk:~# scp root@137.202.76.203:/tmp/wyang/telltale_crc_calc_test .
+
+root@samsung-adk:~# scp root@134.86.41.7:/tmp/wyang/modeset .
+root@samsung-adk:~# scp root@134.86.41.7:/tmp/wyang/telltale_crc_cards .
+root@samsung-adk:~# scp root@134.86.41.7:/tmp/wyang/telltale_crc_card1 .
+
+root@samsung-adk:~# scp root@134.86.41.7:/tmp/wyang/telltale_crc_card0 .
+root@samsung-adk:~# scp root@134.86.41.7:/tmp/wyang/test_rendernode_card0 .
+
+root@samsung-adk:~# scp root@134.86.41.7:/tmp/wyang/test_pcm01 .
+
+root@samsung-adk:~# scp root@137.202.76.203:/tmp/wyang/telltale_crc_card0 .
+root@samsung-adk:~# scp root@137.202.76.203:/tmp/wyang/telltale_crc_card1 .
+
+console:/ $ su
+console:/ # echo 2 > /proc/sys/kernel/printk
+console:/ # cat /proc/sys/kernel/printk
+2	4	1	7
+
+
+root@samsung-adk:~# lsof /dev/dri/card0
+COMMAND    PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+winston   3304 root   15u   CHR  226,0      0t0 1168 /dev/dri/card0
+winston   3304 root   21u   CHR  226,0      0t0 1168 /dev/dri/card0
+cdcbase-h 3327 root   26u   CHR  226,0      0t0 1168 /dev/dri/card0
+cdcbase-i 3328 root   28u   CHR  226,0      0t0 1168 /dev/dri/card0
+root@samsung-adk:~# systemctl stop winston.service
+
+sficli pwr shutdown
+echo -ne 0 >/sys/class/rtc/rtc0/wakealarm
+echo -ne +90 >/sys/class/rtc/rtc0/wakealarm
+s2r suspend
+
+
+root@samsung-adk:~# 
+
+fastboot flash kernel_sys Image && fastboot flash dtb_sys exynosauto9-sadkauto9-evt1-sys_si.dtb && fastboot flash ker_sys_vmand Image && fastboot flash dtb_sys_vmand exynosauto9-sadkauto9-evt1-sys_si.dtb
+
+
+scp root@192.168.1.1:/tmp/wyang/cdcbase/suspend .
+
+#################################################
+node-state-manager:
+
+cmake -DUSE_INSTALLED_COMMONAPI=ON -DWITH_TESTS=ON  ../
+
+ssh -L 3490:192.168.1.20:3490 root@137.202.76.203
+
+ssh -L 3490:192.168.1.20:3490 root@134.86.41.13
+ssh -L 3490:192.168.1.20:3490 root@134.86.41.9
+ssh -L 3490:192.168.1.20:3490 root@134.86.41.7
+
+
+
+ssh -L 3490:192.168.1.20:3490 root@137.202.76.203
+
+
+wget -r -np -nH https://alm-artifactory.alm.mentorg.com:443/artifactory/p8431-cdc_base/ci_cd/temporary/478/yocto/images/samsung-adk
+
+
+root@samsung-adk:~# od -t u2 /sys/nk/prop/nk.vms.online  | xargs | cut -d " " -f 2
+
+
+
+ 
+
+

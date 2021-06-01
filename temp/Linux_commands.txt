@@ -1,0 +1,11 @@
+
+http://superuser.com/questions/401066/find-what-process-is-on-the-other-end-of-a-pipe
+
+fuser
+
+lsof
+
+(find /proc -type l | xargs ls -l | fgrep 'pipe:[20043922]') 2>/dev/null
+
+
+git archive --prefix=at91bootstrap/ 6640499424bf1e44d7faf009b32737e5c972494e -o at91bootstap.zip

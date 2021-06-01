@@ -1,0 +1,15 @@
+
+bootargs=console=ttyS0,115200 mtdparts=atmel_nand:256k(bootstrap)ro,512k(uboot)ro,256k(env),256k(env_redundant),256k(spare),512k(dtb),6M(kernel)ro,-(rootfs) rootfstype=ubifs ubi.mtd=7 root=ubi0:rootfs rw
+
+setenv ipaddr 10.217.12.220
+setenv serverip 10.217.6.34
+
+setenv go 'tftp 21000000 wyang/at91-sama5d4_xplained.dtb;tftp 22000000 wyang/zImage; bootz 0x22000000 - 0x21000000'
+
+tftp 21000000 wyang/at91-sama5d4_xplained.dtb
+
+tftp 22000000 wyang/zImage;
+
+setenv bootcmd 'nand read 0x21000000 0x00180000 0x00007fab; nand read 0x22000000 0x00200000 0x00367458; bootz 0x22000000 - 0x21000000'
+
+
